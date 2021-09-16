@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API
 {
@@ -28,6 +29,8 @@ namespace team_f_WebShop.API
         {
 
             services.AddControllers();
+            services.AddScoped<IcategoryService, categoryService>();
+               
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "team_f_WebShop.API", Version = "v1" });
