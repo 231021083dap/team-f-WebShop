@@ -20,7 +20,6 @@ namespace team_f_WebShop.API.Database.Entities
         public int Quantity { get; set; }
 
         [Column(TypeName = "nvarchar(32)")]
-
         public string Desciption { get; set; }
     }
 }

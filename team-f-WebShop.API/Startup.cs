@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Repositories;
 using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API
@@ -31,8 +32,10 @@ namespace team_f_WebShop.API
         {
 
 
-            // added IProductService, ProductService
+            // added scopes
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
 
 
             // Connection string "Default"
