@@ -105,5 +105,20 @@ namespace team_f_WebShop.Tests
             Assert.Equal(500, statusCodeResult.StatusCode);
         }
 
+        [Fact]
+        public void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
+        {
+            // Arrange
+            _categoryservice
+                .Setup(s => s.GetAllcategory())
+                .Returns(() => throw new System.Exception("This is an exception"));
+
+            // Act
+            var result = _sut.GetAll();
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
     }
 }
