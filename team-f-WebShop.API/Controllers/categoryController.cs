@@ -25,6 +25,11 @@ namespace team_f_WebShop.API.Controllers
         {
             List<categoryResponse> categorys = _categoryservice.GetAllcategory();
 
+            if(categorys == null)
+            {
+                return Problem("Got no data, not even an empty list, this is unexpected");
+            }
+
             if(categorys.Count == 0)
             {
                 return NoContent();

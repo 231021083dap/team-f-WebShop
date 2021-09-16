@@ -88,5 +88,22 @@ namespace team_f_WebShop.Tests
             Assert.Equal(204, statusCodeResult.StatusCode);
         }
 
+
+        [Fact]
+        public void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
+        {
+            // Arrange
+            _categoryservice
+                .Setup(s => s.GetAllcategory())
+                .Returns(() => null);
+
+            // Act
+            var result = _sut.GetAll();
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
     }
 }
