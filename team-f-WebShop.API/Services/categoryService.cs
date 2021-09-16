@@ -7,5 +7,6 @@ namespace team_f_WebShop.API.Services
 {
     public class categoryService
     {
+
     }
 }
