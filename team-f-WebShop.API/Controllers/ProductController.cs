@@ -22,14 +22,63 @@ namespace team_f_WebShop.API.Controllers
 
 
 
-
-
         [HttpGet]
         public IActionResult GetAll()
         {
+
+            try
+            {
+                List<ProductResponse> Products = _productService.GetAllProducts();
+
+                if (Products == null)
+                {
+                    return Problem("Got no data, not even an empty list, this is unexpected"); // code 500
+                }
+
+                if (Products.Count == 0)
+                {
+                    return NoContent(); // code 204
+                }
+
+                return Ok(Products);  // code 200
+            }
+
+
+            catch (Exception ex)
+            { 
+                return Problem(ex.Message); // code 500
+            }
+        }
+
+
+
+        // ____________________________________________________________________________________________________
+
+        [HttpGet]
+        public IActionResult GetById()
+        {
             List<ProductResponse> Products = _productService.GetAllProducts();
 
-            return Ok(Products);
+            try
+            {
+                if (Products == null)
+                {
+                    return Problem("Got no data, not even an empty list, this is unexpected"); // code 500
+                }
+
+
+                if (Products.Count == 0)
+                {
+                    return NoContent(); // code 204
+                }
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message); // code 500
+            }
+
+
+            return Ok(Products);  // code 200
         }
     }
 }

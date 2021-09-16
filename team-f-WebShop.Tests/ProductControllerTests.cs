@@ -64,5 +64,85 @@ namespace team_f_WebShop.Tests
             Assert.Equal(200, statusCodeResult.StatusCode);
         }
 
+
+
+        [Fact]
+        public void GetAll_shouldReturnStatusCode204_WhenDataDoesNotExist()
+        {
+            // Arrange
+            List<ProductResponse> Products = new();
+
+
+            _productService
+                .Setup(s => s.GetAllProducts())
+                .Returns(Products);
+
+            // Act
+            var result = _sut.GetAll();
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(204, statusCodeResult.StatusCode);
+        }
+
+
+
+
+        [Fact]
+        public void GetAll_shouldReturnStatusCode500_WhenNullIsReturnedFromService()
+        {
+            // Arrange
+            _productService
+                .Setup(s => s.GetAllProducts())
+                .Returns(() => null); //return null
+
+            // Act
+            var result = _sut.GetAll();
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
+
+
+        [Fact]
+        public void GetAll_shouldReturnStatusCode500_WhenExeptionIsRaised()
+        {
+            // Arrange
+            _productService
+                .Setup(s => s.GetAllProducts())
+                .Returns(() => throw new System.Exception("This is an exception"));
+
+            // Act
+            var result = _sut.GetAll();
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
+        // _______________________________________________________________________________
+
+
+
+
+        [Fact]
+        public void GetById_shouldReturnStatusCode200_WhenDataExists()
+        {
+            // Arrange
+
+
+            // Act
+
+
+            // Assert
+
+
+        }
+
     }
 }
