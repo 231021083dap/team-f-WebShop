@@ -15,10 +15,10 @@ namespace team_f_WebShop.Tests
         public void GetAll_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
-            categoryController controller = new categoryController();
+            categoryController categorycontroller = new categoryController();
 
             // Act
-            var result = controller.GetAll();
+            var result = categorycontroller.GetAll();
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
