@@ -23,19 +23,26 @@ namespace team_f_WebShop.API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<categoryResponse> categorys = _categoryservice.GetAllcategory();
-
-            if(categorys == null)
+            try
             {
-                return Problem("Got no data, not even an empty list, this is unexpected");
-            }
+                List<categoryResponse> categorys = _categoryservice.GetAllcategory();
 
-            if(categorys.Count == 0)
+                if (categorys == null)
+                {
+                    return Problem("Got no data, not even an empty list, this is unexpected");
+                }
+
+                if (categorys.Count == 0)
+                {
+                    return NoContent();
+                }
+
+                return Ok(categorys);
+            }
+            catch(Exception ex)
             {
-                return NoContent();
+                return Problem(ex.Message);
             }
-
-            return Ok(categorys);
         }
     }
 }
