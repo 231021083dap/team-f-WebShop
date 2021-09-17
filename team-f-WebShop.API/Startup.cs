@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using team_f_WebShop.API.Database;
 using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API
@@ -29,6 +31,10 @@ namespace team_f_WebShop.API
         {
 
             services.AddControllers();
+
+            services.AddDbContext<WebShopProjectContext>(
+                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+
             services.AddScoped<IcategoryService, categoryService>();
                
             services.AddSwaggerGen(c =>
