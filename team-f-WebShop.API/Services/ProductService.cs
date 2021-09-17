@@ -44,6 +44,7 @@ namespace team_f_WebShop.API.Services
         }
 
 
+        /*
         public async Task<ProductResponse> GetByIdProductsService(int productId)
         {
             Product product = await _productRepository.GetById(productId);
@@ -60,6 +61,11 @@ namespace team_f_WebShop.API.Services
                     Pages = b.Pages
                 }).ToList()
             };
+        }
+        */
+        public Task<ProductResponse> GetByIdProductsService(int productId)
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -79,5 +85,6 @@ namespace team_f_WebShop.API.Services
         {
             throw new NotImplementedException();
         }
+
     }
 }

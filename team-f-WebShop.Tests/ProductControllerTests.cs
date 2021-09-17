@@ -51,12 +51,12 @@ namespace team_f_WebShop.Tests
             });
 
             _productService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAllProductsService())
                 .Returns(Products);
 
 
             // Act
-            var result = _sut.GetAll();
+            var result = _sut.GetAllProductController();
 
 
             // Assert
@@ -74,11 +74,11 @@ namespace team_f_WebShop.Tests
 
 
             _productService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAllProductsService())
                 .Returns(Products);
 
             // Act
-            var result = _sut.GetAll();
+            var result = _sut.GetAllProductController();
 
 
             // Assert

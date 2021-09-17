@@ -13,7 +13,10 @@ namespace team_f_WebShop.API.Database
         public WebShopProjectContext(DbContextOptions<WebShopProjectContext> options) : base(options) { }
 
 
+
         public DbSet<Product> Product { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
