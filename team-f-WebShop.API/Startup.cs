@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Repositories;
 using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API
@@ -31,6 +32,7 @@ namespace team_f_WebShop.API
         {
 
             services.AddControllers();
+            services.AddScoped<IcategoryRepository, categoryRepository>();
 
             services.AddDbContext<WebShopProjectContext>(
                 o => o.UseSqlServer(Configuration.GetConnectionString("Default")));

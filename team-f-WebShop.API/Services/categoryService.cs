@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using team_f_WebShop.API.DTOs.Responses;
+using team_f_WebShop.API.Repositories;
 
 namespace team_f_WebShop.API.Services
 {
@@ -13,6 +14,12 @@ namespace team_f_WebShop.API.Services
     }
     public class categoryService : IcategoryService
     {
+        private readonly IcategoryRepository _categoryRepository;
+
+        public categoryService(IcategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
         public List<categoryResponse> GetAllcategory()
         {
             List<categoryResponse> categorys = new();

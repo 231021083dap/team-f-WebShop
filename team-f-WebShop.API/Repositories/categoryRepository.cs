@@ -21,7 +21,7 @@ namespace team_f_WebShop.API.Repositories
         }
         public IEnumerable<category> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.category;
         }
     }
 }
