@@ -24,7 +24,7 @@ namespace team_f_WebShop.Tests
         }
 
         [Fact]
-        public void GetAll_ShouldReturnStatusCode200_WhenDataExists()
+        public async void GetAll_ShouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
             List<categoryResponse> categorys = new();
@@ -61,10 +61,10 @@ namespace team_f_WebShop.Tests
 
             _categoryservice
                 .Setup(s => s.GetAllcategory())
-                .Returns(categorys);
+                .ReturnsAsync(categorys);
 
             // Act
-            var result = _sut.GetAll();
+            var result = await _sut.GetAll();
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -72,16 +72,16 @@ namespace team_f_WebShop.Tests
         }
 
         [Fact]
-        public void GetAll_ShouldReturnStatusCode204_WhenNoDataExists()
+        public async void GetAll_ShouldReturnStatusCode204_WhenNoDataExists()
         {
             // Arrange
             List<categoryResponse> category = new();
             _categoryservice
                 .Setup(s => s.GetAllcategory())
-                .Returns(category);
+                .ReturnsAsync(category);
 
             // Act
-            var result = _sut.GetAll();
+            var result = await _sut.GetAll();
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -90,15 +90,15 @@ namespace team_f_WebShop.Tests
 
 
         [Fact]
-        public void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
+        public async void GetAll_ShouldReturnStatusCode500_WhenNullIsReturnedFromService()
         {
             // Arrange
             _categoryservice
                 .Setup(s => s.GetAllcategory())
-                .Returns(() => null);
+                .ReturnsAsync(() => null);
 
             // Act
-            var result = _sut.GetAll();
+            var result = await _sut.GetAll();
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
@@ -106,15 +106,15 @@ namespace team_f_WebShop.Tests
         }
 
         [Fact]
-        public void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
+        public async void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
             // Arrange
             _categoryservice
                 .Setup(s => s.GetAllcategory())
-                .Returns(() => throw new System.Exception("This is an exception"));
+                .ReturnsAsync(() => throw new System.Exception("This is an exception"));
 
             // Act
-            var result = _sut.GetAll();
+            var result = await _sut.GetAll();
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;

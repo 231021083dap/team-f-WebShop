@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace team_f_WebShop.API.Repositories
 {
     public interface IcategoryRepository
     {
-        IEnumerable<category> GetAll();
+        Task<List<category>> GetAll();
     }
     public class categoryRepository : IcategoryRepository
     {
@@ -19,9 +20,9 @@ namespace team_f_WebShop.API.Repositories
         {
             _context = context;
         }
-        public IEnumerable<category> GetAll()
+        public async Task<List<category>> GetAll()
         {
-            return _context.category;
+            return await _context.category.ToListAsync();
         }
     }
 }

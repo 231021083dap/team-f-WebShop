@@ -11,7 +11,7 @@ namespace team_f_WebShop.API.Services
 
     public interface IcategoryService
     {
-        List<categoryResponse> GetAllcategory();
+        Task<List<categoryResponse>> GetAllcategory();
     }
     public class categoryService : IcategoryService
     {
@@ -21,9 +21,9 @@ namespace team_f_WebShop.API.Services
         {
             _categoryRepository = categoryRepository;
         }
-        public List<categoryResponse> GetAllcategory()
+        public async Task<List<categoryResponse>> GetAllcategory()
         {
-            IEnumerable<category> categorys = _categoryRepository.GetAll();
+            List<category> categorys = await _categoryRepository.GetAll();
 
             //categorys.Add(new categoryResponse
             //{

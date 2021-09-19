@@ -21,11 +21,11 @@ namespace team_f_WebShop.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             try
             {
-                List<categoryResponse> categorys = _categoryservice.GetAllcategory();
+                List<categoryResponse> categorys = await _categoryservice.GetAllcategory();
 
                 if (categorys == null)
                 {

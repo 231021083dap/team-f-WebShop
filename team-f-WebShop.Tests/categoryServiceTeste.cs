@@ -24,7 +24,7 @@ namespace team_f_WebShop.Tests
         }
 
         [Fact]
-        public void GetAll_ShouldReturnListOfcatagoryResponses_WhencategorysExists() 
+        public async void GetAll_ShouldReturnListOfcatagoryResponses_WhencategorysExists() 
         {
             // Arrange
             List<category> categorys = new();
@@ -42,11 +42,11 @@ namespace team_f_WebShop.Tests
 
             _categoryRepository
                 .Setup(a => a.GetAll())
-                .Returns(categorys);
+                .ReturnsAsync(categorys);
 
             // Act
 
-            var result = _sut.GetAllcategory();
+            var result = await _sut.GetAllcategory();
 
             // Assert
 
