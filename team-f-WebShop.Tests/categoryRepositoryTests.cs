@@ -96,6 +96,29 @@ namespace team_f_WebShop.Tests
         }
 
         [Fact]
+        public async Task Create_ShouldFailToAddcategory_WhenAddingcategoryWithExistingId()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+
+            category category = new category
+            {
+                Id = 1,
+                categoryName = "Computer"
+            };
+
+            _context.category.Add(category);
+            await _context.SaveChangesAsync();
+
+            // Act
+            Func<Task> action = async () => await _sut.Create(category);
+
+            // Assert
+            var ex = await Assert.ThrowsAsync<ArgumentException>(action);
+            Assert.Contains("An item with the same key has already been added", ex.Message);
+        }
+
+        [Fact]
         public async Task GetById_ShouldReturnThecategory_IfcategoryExists()
         {
             // Arrange
@@ -126,6 +149,87 @@ namespace team_f_WebShop.Tests
 
             // Act
             var result = await _sut.GetById(categoryId);
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async Task Update_ShouldChangeValuesOncategory_WhencategoryExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int categoryId = 1;
+            category category = new category
+            {
+                Id = categoryId,
+                categoryName = "Computer"
+            };
+            _context.category.Add(category);
+            await _context.SaveChangesAsync();
+
+            category updatecategory = new category
+            {
+                Id = categoryId,
+                categoryName = "screen"
+            };
+
+            // Act
+            var result = await _sut.Update(categoryId, updatecategory);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<category>(result);
+            Assert.Equal(categoryId, result.Id);
+            Assert.Equal(updatecategory.categoryName, result.categoryName);
+        }
+
+        [Fact]
+        public async Task Update_shouldReturnNull_WhencategoryDoesNotExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int categoryId = 1;
+            category updatecategory = new category
+            {
+                Id = categoryId,
+                categoryName = "Computer"
+            };
+
+            // Act
+            var result = await _sut.Update(categoryId, updatecategory);
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async Task Delete_ShouldReturnDeletedcategory_WhencategoryIsDelete()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int categoryId = 1;
+            category category = new category
+            {
+                Id = categoryId,
+                categoryName = "Computer"
+            };
+            _context.category.Add(category);
+            await _context.SaveChangesAsync();
+
+            var result = await _sut.Delete(categoryId);
+            var categorys = await _sut.GetAll();
+        }
+
+        [Fact]
+        public async Task Delete_ShouldReturnNull_WhencategoryDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int categoryId = 1;
+
+            // Act
+            var result = await _sut.Delete(categoryId);
 
             // Assert
             Assert.Null(result);
