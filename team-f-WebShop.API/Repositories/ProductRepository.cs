@@ -57,7 +57,6 @@ namespace team_f_WebShop.API.Repositories
             Product updateProduct = await _context.Product.FirstOrDefaultAsync(a => a.ProductId == productId);
             if (updateProduct != null)
             {
-                updateProduct.ProductId = product.ProductId;
                 updateProduct.Name = product.Name;
                 updateProduct.Price = product.Price;
                 updateProduct.Quantity = product.Quantity;
