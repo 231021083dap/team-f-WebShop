@@ -73,6 +73,62 @@ namespace team_f_WebShop.Tests
             Assert.IsType<List<category>>(result);
         }
 
+        [Fact]
+        public async Task Create_ShouldAddIdTocategory_WhenSavingToDatabase()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int expectedId = 1;
+            category category = new category
+            {
+                categoryName = "Computer"
+            };
 
+            // Act
+
+            var result = await _sut.Create(category);
+
+            // Asserts
+            Assert.NotNull(result);
+            Assert.IsType<category>(result);
+            Assert.Equal(expectedId, result.Id);
+
+        }
+
+        [Fact]
+        public async Task GetById_ShouldReturnThecategory_IfcategoryExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int categoryId = 1;
+            _context.category.Add(new category
+            {
+                Id = categoryId,
+                categoryName = "Computer"
+            });
+            await _context.SaveChangesAsync();
+
+            // Act
+            var result = await _sut.GetById(categoryId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<category>(result);
+            Assert.Equal(categoryId, result.Id);
+        }
+
+        [Fact]
+        public async Task GetById_ShouldReturnNull_IfcategoryDoesNotExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int categoryId = 1;
+
+            // Act
+            var result = await _sut.GetById(categoryId);
+
+            // Assert
+            Assert.Null(result);
+        }
     }
 }
