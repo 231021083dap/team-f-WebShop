@@ -11,11 +11,11 @@ namespace team_f_WebShop.API.Repositories
 
     public interface IProductRepository
     {
-        Task<List<Product>> GetAllProductsRepository();
-        Task<Product> GetByIdProductsRepository(int productId);
-        Task<Product> CreateProductsRepository(Product product);
-        Task<Product> UpdateProductsRepository(int productId, Product product);
-        Task<Product> DeleteProductsRepository(int productId);
+        Task<List<Product>> GetAllProductRepository();
+        Task<Product> GetByIdProductRepository(int productId);
+        Task<Product> CreateProductRepository(Product product);
+        Task<Product> UpdateProductRepository(int productId, Product product);
+        Task<Product> DeleteProductRepository(int productId);
     }
 
 
@@ -32,31 +32,50 @@ namespace team_f_WebShop.API.Repositories
 
 
 
-        public async Task<List<Product>> GetAllProductsRepository()
+        public async Task<List<Product>> GetAllProductRepository()
         {
             return await _context.Product
                 .ToListAsync();
         }
 
 
-        public async Task<Product> GetByIdProductsRepository(int productId)
+        public async Task<Product> GetByIdProductRepository(int productId)
         {
-            throw new NotImplementedException();
+            return await _context.Product
+                .FirstOrDefaultAsync(a => a.ProductId == productId);
         }
 
-        public async Task<Product> CreateProductsRepository(Product product)
+        public async Task<Product> CreateProductRepository(Product product)
         {
-            throw new NotImplementedException();
+            _context.Product.Add(product);
+            await _context.SaveChangesAsync();
+            return product;
         }
 
-        public async Task<Product> UpdateProductsRepository(int productId, Product product)
+        public async Task<Product> UpdateProductRepository(int productId, Product product)
         {
-            throw new NotImplementedException();
+            Product updateProduct = await _context.Product.FirstOrDefaultAsync(a => a.ProductId == productId);
+            if (updateProduct != null)
+            {
+                updateProduct.ProductId = product.ProductId;
+                updateProduct.Name = product.Name;
+                updateProduct.Price = product.Price;
+                updateProduct.Quantity = product.Quantity;
+                updateProduct.Desciption = product.Desciption;
+                await _context.SaveChangesAsync();
+            }
+            return updateProduct;
         }
 
-        public async Task<Product> DeleteProductsRepository(int productId)
+        public async Task<Product> DeleteProductRepository(int productId)
         {
-            throw new NotImplementedException();
+            Product product = await _context.Product.FirstOrDefaultAsync(a => a.ProductId == productId);
+            if (product != null)
+            {
+                _context.Product.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+            return product;
         }
     }
 }

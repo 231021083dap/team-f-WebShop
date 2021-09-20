@@ -10,11 +10,11 @@ namespace team_f_WebShop.API.Services
 {
     public interface IProductService
     {
-        Task<List<ProductResponse>> GetAllProductsService();
-        Task<ProductResponse> GetByIdProductsService(int productId);
-        Task<ProductResponse> CreateProductsService(Product product);
-        Task<ProductResponse> UpdateProductsService(int productId, Product product);
-        Task<bool> DeleteProductsService(int productId);
+        Task<List<ProductResponse>> GetAllProductService();
+        Task<ProductResponse> GetByIdProductService(int productId);
+        Task<ProductResponse> CreateProductService(Product product);
+        Task<ProductResponse> UpdateProductService(int productId, Product product);
+        Task<bool> DeleteProductService(int productId);
     }
 
 
@@ -29,9 +29,10 @@ namespace team_f_WebShop.API.Services
 
 
 
-        public async Task<List<ProductResponse>> GetAllProductsService()
+
+        public async Task<List<ProductResponse>> GetAllProductService()
         {
-            List<Product> products = await _productRepository.GetAllProductsRepository();
+            List<Product> products = await _productRepository.GetAllProductRepository();
             return products.Select(a => new ProductResponse
             {
                 ProductId = a.ProductId,
@@ -39,51 +40,74 @@ namespace team_f_WebShop.API.Services
                 Price = a.Price,
                 Quantity = a.Quantity,
                 Desciption = a.Desciption
-
             }).ToList();
         }
 
 
-        /*
-        public async Task<ProductResponse> GetByIdProductsService(int productId)
+        public async Task<ProductResponse> GetByIdProductService(int productId)
         {
-            Product product = await _productRepository.GetById(productId);
-            return author == null ? null : new AuthorResponse
+            Product product = await _productRepository.GetByIdProductRepository(productId);
+            return product == null ? null : new ProductResponse
             {
-                Id = author.Id,
-                FirstName = author.FirstName,
-                LastName = author.LastName,
-                MiddleName = author.MiddleName,
-                Books = author.Books.Select(b => new AuthorBookResponse
-                {
-                    Id = b.Id,
-                    Title = b.Title,
-                    Pages = b.Pages
-                }).ToList()
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                Desciption = product.Desciption
             };
         }
-        */
-        public Task<ProductResponse> GetByIdProductsService(int productId)
+
+
+        public async Task<ProductResponse> CreateProductService(Product newProduct)
         {
-            throw new NotImplementedException();
+            Product product = new Product
+            {
+                Name = newProduct.Name,
+                Price = newProduct.Price,
+                Quantity = newProduct.Quantity,
+                Desciption = newProduct.Desciption
+            };
+
+            product = await _productRepository.CreateProductRepository(product);
+
+            return product == null ? null : new ProductResponse
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                Desciption = product.Desciption
+            };
         }
 
 
-        public async Task<ProductResponse> CreateProductsService(Product product)
+        public async Task<ProductResponse> UpdateProductService(int productId, Product updateProduct)
         {
-            throw new NotImplementedException();
+            Product product = new Product
+            {
+                Name = updateProduct.Name,
+                Price = updateProduct.Price,
+                Quantity = updateProduct.Quantity,
+                Desciption = updateProduct.Desciption
+            };
+
+            product = await _productRepository.UpdateProductRepository(productId, product);
+
+            return product == null ? null : new ProductResponse
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                Desciption = product.Desciption
+            };
         }
 
 
-        public async Task<ProductResponse> UpdateProductsService(int productId, Product product)
+        public async Task<bool> DeleteProductService(int productId)
         {
-            throw new NotImplementedException();
-        }
-
-
-        public async Task<bool> DeleteProductsService(int productId)
-        {
-            throw new NotImplementedException();
+            var result = await _productRepository.DeleteProductRepository(productId);
+            return (result != null);
         }
 
     }

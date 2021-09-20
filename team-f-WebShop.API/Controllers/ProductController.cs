@@ -28,7 +28,7 @@ namespace team_f_WebShop.API.Controllers
         {
             try
             {
-                List<ProductResponse> Products = await _productService.GetAllProductsService();
+                List<ProductResponse> Products = await _productService.GetAllProductService();
 
                 if (Products == null)
                 {
@@ -50,14 +50,13 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
-        // ____________________________________________________________________________________________________
 
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetByIdProductController([FromRoute] int productId)
         {
             try
             {
-                ProductResponse products = await _productService.GetByIdProductsService(productId);
+                ProductResponse products = await _productService.GetByIdProductService(productId);
 
                 if (products == null)
                 {
@@ -80,7 +79,7 @@ namespace team_f_WebShop.API.Controllers
         {
             try
             {
-                var newProduct = await _productService.CreateProductsService(product);
+                var newProduct = await _productService.CreateProductService(product);
 
                 if (newProduct == null) 
                 {
@@ -97,11 +96,11 @@ namespace team_f_WebShop.API.Controllers
 
 
         [HttpPut("{productId}")]
-        public async Task<IActionResult> UpdateProductController([FromRoute] int productId, [FromBody] Product product)    //---------------------------
+        public async Task<IActionResult> UpdateProductController([FromRoute] int productId, [FromBody] Product product) 
         {
             try
             {
-                var updateProduct = await _productService.UpdateProductsService(productId, product);
+                var updateProduct = await _productService.UpdateProductService(productId, product);
                 if (updateProduct == null)
                 {
                     return BadRequest("Update failed.."); // code 400
@@ -110,7 +109,7 @@ namespace team_f_WebShop.API.Controllers
             }
             catch (Exception ex)
             {
-                return Problem(ex.Message);
+                return Problem(ex.Message); // code 500
             }
         }
 
@@ -121,7 +120,7 @@ namespace team_f_WebShop.API.Controllers
         {
             try
             {
-                var deleteProduct = await _productService.DeleteProductsService(productId);
+                var deleteProduct = await _productService.DeleteProductService(productId);
 
                 if (deleteProduct == false) // <====================================
                 {
