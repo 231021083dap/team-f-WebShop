@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace team_f_WebShop.Tests
 {
-    class ProductServiceTests
+    public class ProductServiceTests
     {
+
     }
 }

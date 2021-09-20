@@ -25,9 +25,8 @@ namespace team_f_WebShop.Tests
 
 
 
-
         [Fact]
-        public void GetAll_shouldReturnStatusCode200_WhenDataExists()
+        public async void GetAll_shouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
             List<ProductResponse> Products = new();
@@ -51,12 +50,12 @@ namespace team_f_WebShop.Tests
             });
 
             _productService
-                .Setup(s => s.GetAllProductsService())
-                .Returns(Products);
+                .Setup(s => s.GetAllProductService())
+                .ReturnsAsync(Products);
 
 
             // Act
-            var result = _sut.GetAllProductController();
+            var result = await _sut.GetAllProductController();
 
 
             // Assert
@@ -65,20 +64,19 @@ namespace team_f_WebShop.Tests
         }
 
 
-
         [Fact]
-        public void GetAll_shouldReturnStatusCode204_WhenDataDoesNotExist()
+        public async void GetAll_shouldReturnStatusCode204_WhenDataDoesNotExist()
         {
             // Arrange
             List<ProductResponse> Products = new();
 
 
             _productService
-                .Setup(s => s.GetAllProductsService())
-                .Returns(Products);
+                .Setup(s => s.GetAllProductService())
+                .ReturnsAsync(Products);
 
             // Act
-            var result = _sut.GetAllProductController();
+            var result = await _sut.GetAllProductController();
 
 
             // Assert
@@ -87,18 +85,16 @@ namespace team_f_WebShop.Tests
         }
 
 
-
-
         [Fact]
-        public void GetAll_shouldReturnStatusCode500_WhenNullIsReturnedFromService()
+        public async void GetAll_shouldReturnStatusCode500_WhenNullIsReturnedFromService()
         {
             // Arrange
             _productService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAllProductService())
                 .Returns(() => null); //return null
 
             // Act
-            var result = _sut.GetAll();
+            var result = await _sut.GetAllProductController();
 
 
             // Assert
@@ -107,17 +103,16 @@ namespace team_f_WebShop.Tests
         }
 
 
-
         [Fact]
-        public void GetAll_shouldReturnStatusCode500_WhenExeptionIsRaised()
+        public async void GetAll_shouldReturnStatusCode500_WhenExeptionIsRaised()
         {
             // Arrange
             _productService
-                .Setup(s => s.GetAllProducts())
+                .Setup(s => s.GetAllProductService())
                 .Returns(() => throw new System.Exception("This is an exception"));
 
             // Act
-            var result = _sut.GetAll();
+            var result = await _sut.GetAllProductController();
 
 
             // Assert
@@ -125,24 +120,75 @@ namespace team_f_WebShop.Tests
             Assert.Equal(500, statusCodeResult.StatusCode);
         }
 
-        // _______________________________________________________________________________
+
+        // _______________________________________________________________________________________________________
 
 
-
+        // SKAL RETTES
 
         [Fact]
-        public void GetById_shouldReturnStatusCode200_WhenDataExists()
+        public async void GetById_shouldReturnStatusCode200_WhenDataExists()
         {
             // Arrange
+            ProductResponse Products = new ProductResponse
+            {
+                ProductId = 1,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            }; 
+
+            _productService
+                .Setup(s => s.GetByIdProductService(1))
+                .ReturnsAsync(Products);
 
 
             // Act
+            var result = await _sut.GetByIdProductController(1);
 
 
             // Assert
-
-
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(200, statusCodeResult.StatusCode);
         }
 
+
+        [Fact]
+        public async void GetById_shouldReturnStatusCode204_WhenDataDoesNotExist()
+        {
+            // Arrange
+            ProductResponse Products = new();
+
+            _productService
+                .Setup(s => s.GetByIdProductService(100))
+                .ReturnsAsync(Products);
+
+            // Act
+            var result = await _sut.GetByIdProductController(100);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(204, statusCodeResult.StatusCode);
+        }
+
+
+        [Fact]
+        public async void GetById_shouldReturnStatusCode500_WhenNullIsReturnedFromService()
+        {
+            // Arrange
+            _productService
+                .Setup(s => s.GetAllProductService())
+                .Returns(() => null); //return null
+
+            // Act
+            var result = await _sut.GetAllProductController();
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
     }
 }
