@@ -28,6 +28,28 @@ namespace team_f_WebShop.API.Services
             _categoryRepository = categoryRepository;
         }
 
+        public async Task<List<categoryResponse>> GetAllcategory()
+        {
+            List<category> categorys = await _categoryRepository.GetAll();
+
+            return categorys.Select(a => new categoryResponse
+            {
+                Id = a.Id,
+                categoryName = a.categoryName
+            }).ToList();
+        }
+
+        public async Task<categoryResponse> GetById(int categoryId)
+        {
+            category category = await _categoryRepository.GetById(categoryId);
+
+            return category == null ? null : new categoryResponse
+            {
+                Id = category.Id,
+                categoryName = category.categoryName
+            };
+        }
+
         public async Task<categoryResponse> Create(NewCategory newCategory)
         {
             category category = new category
@@ -44,29 +66,6 @@ namespace team_f_WebShop.API.Services
             };
         }
 
-        public Task<bool> Delete(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<List<categoryResponse>> GetAllcategory()
-        {
-            List<category> categorys = await _categoryRepository.GetAll();
-
-            
-
-            return categorys.Select(a => new categoryResponse
-            {
-                Id = a.Id,
-                categoryName = a.categoryName
-            }).ToList();
-        }
-
-        public Task<categoryResponse> GetById(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<categoryResponse> Update(int categoryId, UpdateCategory updatecategory)
         {
             category category = new category
@@ -81,6 +80,12 @@ namespace team_f_WebShop.API.Services
                 Id = category.Id,
                 categoryName = category.categoryName
             };
+        }
+
+        public async Task<bool> Delete(int categoryId)
+        {
+            var result = await _categoryRepository.Delete(categoryId);
+            return true;
         }
     }
 }
