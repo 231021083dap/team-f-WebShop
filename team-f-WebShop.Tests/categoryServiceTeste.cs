@@ -13,7 +13,7 @@ using Xunit;
 
 namespace team_f_WebShop.Tests
 {
-    
+
     public class categoryServiceTeste
     {
         private readonly categoryService _sut;
@@ -25,7 +25,7 @@ namespace team_f_WebShop.Tests
         }
 
         [Fact]
-        public async void GetAll_ShouldReturnListOfcatagoryResponses_WhencategorysExists() 
+        public async void GetAll_ShouldReturnListOfcatagoryResponses_WhencategorysExists()
         {
             // Arrange
             List<category> categorys = new();
@@ -37,8 +37,8 @@ namespace team_f_WebShop.Tests
             });
             categorys.Add(new category
             {
-                 Id = 2,
-                 categoryName = "Screen"
+                Id = 2,
+                categoryName = "Screen"
             });
 
             _categoryRepository
@@ -150,5 +150,81 @@ namespace team_f_WebShop.Tests
             Assert.Equal(newCategory.categoryName, result.categoryName);
         }
 
+        [Fact]
+        public async void Update_ShouldReturnUpdatecategoryResponse_WhenUpdateIsSuccess()
+        {
+            // Arrange
+            UpdateCategory updateCategory = new UpdateCategory
+            {
+                categoryName = "Computer"
+            };
+
+            int categoryId = 1;
+
+            category category = new category
+            {
+                Id = categoryId,
+                categoryName = "Computer"
+            };
+
+            _categoryRepository
+                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<category>()))
+                .ReturnsAsync(category);
+
+            // Act
+            var result = await _sut.Update(categoryId, updateCategory);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<categoryResponse>(result);
+            Assert.Equal(categoryId, result.Id);
+            Assert.Equal(updateCategory.categoryName, result.categoryName);
+        }
+
+        [Fact]
+        public async void Update_ShouldReturNull_WhencategoryDoesNotExist()
+        {
+            // Arrange
+            UpdateCategory updateCategory = new UpdateCategory
+            {
+                categoryName = "Computer"
+            };
+
+            int categoryId = 1;
+
+            _categoryRepository
+                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<category>()))
+                .ReturnsAsync(() => null);
+
+            // Act
+            var result = await _sut.Update(categoryId, updateCategory);
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
+        {
+            // Arrange
+            int categoryId = 1;
+
+            category category = new category
+            {
+                Id = categoryId,
+                categoryName = "Computer",
+            };
+
+            _categoryRepository
+                .Setup(a => a.Delete(It.IsAny<int>()))
+                .ReturnsAsync(category);
+
+            // Act
+            var result = await _sut.Delete(categoryId);
+
+            // Assert
+            Assert.True(result);
+            
+        }
     }
 }
