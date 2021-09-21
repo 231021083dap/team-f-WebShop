@@ -120,5 +120,28 @@ namespace team_f_WebShop.Tests
             var statusCodeResult = (IStatusCodeActionResult)result;
             Assert.Equal(500, statusCodeResult.StatusCode);
         }
+
+        [Fact]
+        public async void GetById_ShouldReturnStatusCode200_WhenDataExists()
+        {
+            // Arrange
+            int categoryId = 1;
+            categoryResponse category = new categoryResponse
+            {
+                Id = categoryId,
+                categoryName = "Computer"
+            };
+
+            _categoryservice
+                .Setup(a => a.GetById(It.IsAny<int>()))
+                .ReturnsAsync(category);
+
+            // Act
+            var result = await _sut.GetById(categoryId);
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(200, statusCodeResult.StatusCode);
+        }
     }
 }
