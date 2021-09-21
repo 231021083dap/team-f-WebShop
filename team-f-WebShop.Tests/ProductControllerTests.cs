@@ -182,11 +182,55 @@ namespace team_f_WebShop.Tests
         {
             // Arrange
             _productService
-                .Setup(s => s.GetByIdProductService(It.IsAny<int>())
+                .Setup(s => s.GetByIdProductService(It.IsAny<int>()))
                 .ReturnsAsync(() => throw new System.Exception("This is an exeption"));
 
             // Act
-            var result = await _sut.GetAllProductController();
+            var result = await _sut.GetByIdProductController(1);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
+
+        //_____________________________________________________________________________________________________
+
+
+
+        [Fact]
+        public async void Create_shouldReturnStatusCode200_WhenDataIsCreated()
+        {
+            // Arrange
+            int productId = 1;
+
+            NewProduct product = new NewProduct
+            {
+                ProductId = 1,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            });
+
+
+            ProductResponse product = new ProductResponse
+            {
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            });
+
+            _productService
+                .Setup(s => s.CreateProductService(It.IsAny<NewProduct>)))
+                .ReturnsAsync(product);
+
+
+            // Act
+            var result = await _sut.GetByIdProductController(1);
 
 
             // Assert
