@@ -163,11 +163,11 @@ namespace team_f_WebShop.Tests
             await _context.Database.EnsureDeletedAsync();
             Product product = new Product
             {
-                ProductId = 1,
-                Name = "GIGABYTE FI32U",
-                Price = 8575,
-                Quantity = 6,
-                Desciption = "LED-skærm"
+                ProductId = 6,
+                Name = "GIGABYTE",
+                Price = 8375,
+                Quantity = 68,
+                Desciption = "skærm"
             };
 
             _context.Product.Add(product);
@@ -178,7 +178,7 @@ namespace team_f_WebShop.Tests
 
             // Assert
             var ex = await Assert.ThrowsAsync<ArgumentException>(action);
-            Assert.Contains("An Item With The Same Key have already been added", ex.Message);
+            Assert.Contains("An item with the same key has already been added", ex.Message);
         }
 
 
