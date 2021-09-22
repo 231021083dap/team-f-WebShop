@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.DTOs.Requests;
+using team_f_WebShop.API.DTOs.Responses;
 using team_f_WebShop.API.Repositories;
 using team_f_WebShop.API.Services;
+using Xunit;
 
 namespace team_f_WebShop.Tests
 {
     public class ProductServiceTests
     {
-        /*
+        
         private readonly ProductService _sut;
-        private readonly Mock<IProductRepository> _authorRepository = new();
+        private readonly Mock<IProductRepository> _productRepository = new();
 
         public ProductServiceTests()
         {
@@ -24,236 +28,277 @@ namespace team_f_WebShop.Tests
 
 
         [Fact]
-        public async void GetAll_ShouldReturnListOfAuthorResponses_WhenAuthorsExist()
+        public async void GetAll_ShouldReturnListOfProductResponses_WhenProductsExist()
         {
             // Arrange
-            List<Author> authors = new();
-            authors.Add(new Author
+            List<Product> products = new();
+            products.Add(new Product
             {
-                Id = 1,
-                FirstName = "George",
-                LastName = "Martin",
-                MiddleName = "R.R."
+                ProductId = 1,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             });
 
-            authors.Add(new Author
+
+            products.Add(new Product
             {
-                Id = 2,
-                FirstName = "James",
-                LastName = "Corey",
-                MiddleName = "S.A."
+                ProductId = 2,
+                Name = "GIGABYTE M28U",
+                Price = 5999,
+                Quantity = 13,
+                Desciption = "3840 x 2160 (4K)"
             });
 
-            _authorRepository
-                .Setup(a => a.GetAll())
-                .ReturnsAsync(authors);
+
+            _productRepository
+                .Setup(a => a.GetAllProductRepository())
+                .ReturnsAsync(products);
 
             // Act
-            var result = await _sut.GetAllAuthors();
+            var result = await _sut.GetAllProductService();
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
-            Assert.IsType<List<AuthorResponse>>(result);
+            Assert.IsType<List<ProductResponse>>(result);
         }
 
+
+
         [Fact]
-        public async void GetAll_ShouldReturnEmptyListOfAuthorResponses_WhenNoAuthorsExists()
+        public async void GetAll_ShouldReturnEmptyListOfProductResponses_WhenNoProductsExists()
         {
             // Arrange
-            List<Author> authors = new();
+            List<Product> products = new List<Product>();
 
-            _authorRepository
-                .Setup(a => a.GetAll())
-                .ReturnsAsync(authors);
+            _productRepository
+                .Setup(a => a.GetAllProductRepository())
+                .ReturnsAsync(products);
 
             // Act
-            var result = await _sut.GetAllAuthors();
+            var result = await _sut.GetAllProductService();
 
             // Assert
             Assert.NotNull(result);
             Assert.Empty(result);
-            Assert.IsType<List<AuthorResponse>>(result);
+            Assert.IsType<List<ProductResponse>>(result);
         }
 
+
+        // ______________________________________________________________________________
+
+
         [Fact]
-        public async void GetById_ShouldReturnAnAuthorResponse_WhenAuthorExists()
+        public async void GetById_ShouldReturnAProduct_WhenProductExists()
         {
             // Arrange
-            int authorId = 1;
+            int productId = 1;
 
-            Author author = new Author
+            Product product = new Product
             {
-                Id = authorId,
-                FirstName = "George",
-                LastName = "Martin",
-                MiddleName = "R.R."
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+
             };
 
-            _authorRepository
-                .Setup(a => a.GetById(It.IsAny<int>()))
-                .ReturnsAsync(author);
+            _productRepository
+                .Setup(a => a.GetByIdProductRepository(It.IsAny<int>()))
+                .ReturnsAsync(product);
 
             // Act
-            var result = await _sut.GetById(authorId);
+            var result = await _sut.GetByIdProductService(productId);
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<AuthorResponse>(result);
-            Assert.Equal(author.Id, result.Id);
-            Assert.Equal(author.FirstName, result.FirstName);
-            Assert.Equal(author.LastName, result.LastName);
-            Assert.Equal(author.MiddleName, result.MiddleName);
+            Assert.IsType<ProductResponse>(result);
+            Assert.Equal(product.Name, result.Name);
+            Assert.Equal(product.Price, result.Price);
+            Assert.Equal(product.Quantity, result.Quantity);
+            Assert.Equal(product.Desciption, result.Desciption);
         }
 
+
+
         [Fact]
-        public async void GetById_ShouldReturnNull_WhenAuthorDoesNotExist()
+        public async void GetById_ShouldReturnNull_WhenProductDoesNotExist()
         {
             // Arrange
-            int authorId = 1;
+            int productId = 1;
 
-            _authorRepository
-                .Setup(a => a.GetById(It.IsAny<int>()))
+            _productRepository
+                .Setup(a => a.GetByIdProductRepository(It.IsAny<int>()))
                 .ReturnsAsync(() => null);
 
             // Act
-            var result = await _sut.GetById(authorId);
+            var result = await _sut.GetByIdProductService(productId);
 
             // Assert
             Assert.Null(result);
         }
 
+
+
+        // ______________________________________________________________________________
+
+
+
         [Fact]
-        public async void Create_ShouldReturnAuthorResponse_WhenCreateIsSuccess()
+        public async void Create_ShouldReturnProductResponse_WhenCreateIsSuccess()
         {
             // Arrange
-            NewAuthor newAuthor = new NewAuthor
+            NewProduct newProduct = new NewProduct
             {
-                FirstName = "George",
-                LastName = "Martin",
-                MiddleName = "R.R."
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            int authorId = 1;
+            int productId = 1;
 
-            Author author = new Author
+            Product product = new Product
             {
-                Id = authorId,
-                FirstName = "George",
-                LastName = "Martin",
-                MiddleName = "R.R."
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            _authorRepository
-                .Setup(a => a.Create(It.IsAny<Author>()))
-                .ReturnsAsync(author);
+            _productRepository
+                .Setup(a => a.CreateProductRepository(It.IsAny<Product>()))
+                .ReturnsAsync(product);
 
             // Act
-            var result = await _sut.Create(newAuthor);
+            var result = await _sut.CreateProductService(newProduct);
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<AuthorResponse>(result);
-            Assert.Equal(authorId, result.Id);
-            Assert.Equal(newAuthor.FirstName, result.FirstName);
-            Assert.Equal(newAuthor.LastName, result.LastName);
-            Assert.Equal(newAuthor.MiddleName, result.MiddleName);
+            Assert.IsType<ProductResponse>(result);
+            Assert.Equal(productId, result.ProductId);
+            Assert.Equal(newProduct.Name, result.Name);
+            Assert.Equal(newProduct.Price, result.Price);
+            Assert.Equal(newProduct.Quantity, result.Quantity);
+            Assert.Equal(newProduct.Desciption, result.Desciption);
+
         }
 
+
+        // ______________________________________________________________________________
+
+
+
         [Fact]
-        public async void Update_ShouldReturnUpdatedAuthorResponse_WhenUpdateIsSuccess()
+        public async void Update_ShouldReturnUpdatedProductResponse_WhenUpdateIsSuccess()
         {
             // Arrange
-            UpdateAuthor updateAuthor = new UpdateAuthor
+            UpdateProduct updateProduct = new UpdateProduct
             {
-                FirstName = "Svend",
-                LastName = "Derps",
-                MiddleName = "Derp"
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            int authorId = 1;
+            int productId = 1;
 
-            AuthorResponse authorResponse = new AuthorResponse
+            ProductResponse productResponse = new ProductResponse
             {
-                Id = authorId,
-                FirstName = "Svend",
-                LastName = "Derps",
-                MiddleName = "Derp"
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            Author author = new Author
+            Product product = new Product
             {
-                Id = authorId,
-                FirstName = "Svend",
-                LastName = "Derps",
-                MiddleName = "Derp"
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            _authorRepository
-                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Author>()))
-                .ReturnsAsync(author);
+            _productRepository
+                .Setup(a => a.UpdateProductRepository(It.IsAny<int>(), It.IsAny<Product>()))
+                .ReturnsAsync(product);
 
             // Act
-            var result = await _sut.Update(authorId, updateAuthor);
+            var result = await _sut.UpdateProductService(productId, updateProduct);
 
             // Assert
             Assert.NotNull(result);
-            Assert.IsType<AuthorResponse>(result);
-            Assert.Equal(authorId, result.Id);
-            Assert.Equal(authorResponse.FirstName, result.FirstName);
-            Assert.Equal(authorResponse.LastName, result.LastName);
-            Assert.Equal(authorResponse.MiddleName, result.MiddleName);
+            Assert.IsType<ProductResponse>(result);
+            Assert.Equal(productId, result.ProductId);
+            Assert.Equal(productResponse.Name, result.Name);
+            Assert.Equal(productResponse.Price, result.Price);
+            Assert.Equal(productResponse.Quantity, result.Quantity);
+            Assert.Equal(productResponse.Desciption, result.Desciption);
         }
 
+
+
         [Fact]
-        public async void Update_ShouldReturnNull_WhenAuthorDoesNotExist()
+        public async void Update_ShouldReturnNull_WhenProductDoesNotExist()
         {
             // Arrange
-            UpdateAuthor updateAuthor = new UpdateAuthor
+            UpdateProduct updateProduct = new UpdateProduct
             {
-                FirstName = "George",
-                LastName = "Martin",
-                MiddleName = "R.R."
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            int authorId = 1;
+            int productId = 1;
 
-            _authorRepository
-                .Setup(a => a.Update(It.IsAny<int>(), It.IsAny<Author>()))
+            _productRepository
+                .Setup(a => a.UpdateProductRepository(It.IsAny<int>(), It.IsAny<Product>()))
                 .ReturnsAsync(() => null);
 
             // Act
-            var result = await _sut.Update(authorId, updateAuthor);
+            var result = await _sut.UpdateProductService(productId, updateProduct);
 
             // Assert
             Assert.Null(result);
         }
 
+
+        // _____________________________________________________________________________
+
+
         [Fact]
-        public async void Delete_ShouldReturnTrue_WhenDeleteIsSuccess()
+        public async void Delete_ShouldReturnTrue_WhenProductDeleteIsSuccess()
         {
             // Arrange
-            int authorId = 1;
-
-            Author author = new Author
+            int productId = 1;
+            Product product = new Product
             {
-                Id = authorId,
-                FirstName = "George",
-                LastName = "Martin",
-                MiddleName = "R.R."
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
             };
 
-            _authorRepository
-                .Setup(a => a.Delete(It.IsAny<int>()))
-                .ReturnsAsync(author);
+            _productRepository
+                .Setup(a => a.DeleteProductRepository(It.IsAny<int>()))
+                .ReturnsAsync(product);
+
 
             // Act
-            var result = await _sut.Delete(authorId);
+            var result = await _sut.DeleteProductService(productId);
+
 
             // Assert
             Assert.True(result);
         }
-        */
     }
         
 }
