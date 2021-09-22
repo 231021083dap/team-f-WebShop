@@ -16,7 +16,7 @@ namespace team_f_WebShop.Tests
     {
         private readonly ProductRepository _sut;
         private readonly WebShopProjectContext _context;
-        private readonly DbContextOptions<WebShopProjectContext> _options;
+        private DbContextOptions<WebShopProjectContext> _options;
 
         public ProductRepositoryTests()
         {
@@ -30,12 +30,13 @@ namespace team_f_WebShop.Tests
         }
 
 
+
+
         [Fact]
         public async Task GetAll_ShouldReturnListOfProducts_WhenProductsExists()
         {
             // Arrange
             await _context.Database.EnsureDeletedAsync(); 
-
             _context.Product.Add(new Product
             {
                 ProductId = 1,
@@ -54,14 +55,13 @@ namespace team_f_WebShop.Tests
                 Quantity = 13,
                 Desciption = "3840 x 2160 (4K)"
             });
-
-
             await _context.SaveChangesAsync();
-
             int expectedSize = 2;
+
 
             // Act
             var result = await _sut.GetAllProductRepository();
+
 
             // Assert
             Assert.NotNull(result);
@@ -86,7 +86,228 @@ namespace team_f_WebShop.Tests
         }
 
 
+        //________________________________________________________________________________________
 
+
+        [Fact]
+        public async Task GeById_ShouldReturnTheProduct_IfProductExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int productId = 1;
+            _context.Product.Add(new Product
+            {
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            });
+            await _context.SaveChangesAsync();
+
+            // Act
+            var result = await _sut.GetByIdProductRepository(productId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Product>(result);
+            Assert.Equal(productId, result.ProductId);
+        }
+
+
+        [Fact]
+        public async Task GeById_ShouldReturnNull_IfProductDoesNotExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int productId = 1;
+
+
+            // Act
+            var result = await _sut.GetByIdProductRepository(productId);
+
+            // Assert
+            Assert.Null(result);
+        }
+
+
+        [Fact]
+        public async Task Create_ShouldAddIdToProduct_WhenSavingToDatabase()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int expectedId = 1;
+            Product product = new Product
+            {
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+
+            // Act
+            var result = await _sut.CreateProductRepository(product);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Product>(result);
+            Assert.Equal(expectedId, result.ProductId);
+        }
+
+
+        [Fact]
+        public async Task Create_ShouldFailToAddProduct_WhenAddingProductWithExistingId()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            Product product = new Product
+            {
+                ProductId = 1,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+            _context.Product.Add(product);
+            await _context.SaveChangesAsync();
+
+            // Act
+            Func<Task> action = async () => await _sut.CreateProductRepository(product);
+
+            // Assert
+            var ex = await Assert.ThrowsAsync<ArgumentException>(action);
+            Assert.Contains("An Item With The Same Key have already been added", ex.Message);
+        }
+
+
+        // ________________________________________________________________________________________
+
+
+
+        [Fact]
+        public async Task Update_ShouldChangeValuesOnProduct_WhenProductExists()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int productId = 1;
+            Product product = new Product
+            {
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+            _context.Product.Add(product);
+            await _context.SaveChangesAsync();
+
+            Product updateProduct = new Product
+            {
+                ProductId = productId,
+                Name = "GIGABYTE",
+                Price = 857,
+                Quantity = 62,
+                Desciption = "skærm"
+            };
+
+
+            // Act
+            var result = await _sut.UpdateProductRepository(productId, updateProduct);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Product>(result);
+            Assert.Equal(productId, result.ProductId);
+            Assert.Equal(updateProduct.Name, result.Name);
+            Assert.Equal(updateProduct.Price, result.Price);
+            Assert.Equal(updateProduct.Quantity, result.Quantity);
+            Assert.Equal(updateProduct.Desciption, result.Desciption);
+
+        }
+
+
+        [Fact]
+        public async Task Update_ShouldReturnNull_WhenProductDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int productId = 1;
+            Product updateProduct = new Product
+            {
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+
+            // Act
+            var result = await _sut.UpdateProductRepository(productId, updateProduct);
+
+            // Assert
+            Assert.Null(result);
+
+        }
+
+
+        // ________________________________________________________________________________________
+
+
+
+        [Fact]
+        public async Task Delete_ShouldReturnDeletedProduct_WhenProductIsDeleted()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int productId = 1;
+            Product product = new Product
+            {
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+            _context.Product.Add(product);
+            await _context.SaveChangesAsync();
+
+
+            // Act
+            var result = await _sut.DeleteProductRepository(productId);
+            var products = await _sut.GetAllProductRepository();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.IsType<Product>(result);
+            Assert.Equal(productId, result.ProductId);
+            Assert.Empty(products);
+        }
+
+
+        // ________________________________________________________________________________________
+
+
+
+        [Fact]
+        public async Task Delete_ShouldReturnNull_WhenProductDoesNotExist()
+        {
+            // Arrange
+            await _context.Database.EnsureDeletedAsync();
+            int productId = 1;
+
+
+            // Act
+            var result = await _sut.DeleteProductRepository(productId);
+
+
+            // Assert
+            Assert.Null(result);
+        }
 
     }
 }
