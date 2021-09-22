@@ -10,6 +10,8 @@ using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API.Controllers
 {
+    // api
+    
     [Route("api/[controller]")]
     [ApiController]
     public class categoryController : ControllerBase
