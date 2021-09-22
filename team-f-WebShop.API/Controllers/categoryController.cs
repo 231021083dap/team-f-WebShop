@@ -10,7 +10,7 @@ using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API.Controllers
 {
-    // api
+    // api-api
     
     [Route("api/[controller]")]
     [ApiController]
