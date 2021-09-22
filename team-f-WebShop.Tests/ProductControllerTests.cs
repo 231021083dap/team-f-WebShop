@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using team_f_WebShop.API.Controllers;
+using team_f_WebShop.API.DTOs.Requests;
 using team_f_WebShop.API.DTOs.Responses;
 using team_f_WebShop.API.Services;
 using Xunit;
@@ -204,15 +205,13 @@ namespace team_f_WebShop.Tests
         {
             // Arrange
             int productId = 1;
-
-            NewProduct product = new NewProduct
+            NewProduct newProduct = new NewProduct
             {
-                ProductId = 1,
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
                 Desciption = "LED-skærm"
-            });
+            };
 
 
             ProductResponse product = new ProductResponse
@@ -222,20 +221,169 @@ namespace team_f_WebShop.Tests
                 Price = 8575,
                 Quantity = 6,
                 Desciption = "LED-skærm"
-            });
+            };
 
             _productService
-                .Setup(s => s.CreateProductService(It.IsAny<NewProduct>)))
+                .Setup(s => s.CreateProductService(It.IsAny<NewProduct>()))
                 .ReturnsAsync(product);
 
 
             // Act
-            var result = await _sut.GetByIdProductController(1);
+            var result = await _sut.CreateProductController(newProduct);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(200, statusCodeResult.StatusCode);
+        }
+
+
+        [Fact]
+        public async void Create_shouldReturnStatusCode500_WhenExceptionIsRaised()
+        {
+            // Arrange
+            NewProduct newProduct = new NewProduct
+            {
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+            _productService
+                .Setup(s => s.CreateProductService(It.IsAny<NewProduct>()))
+                .ReturnsAsync(() => throw new System.Exception("This is an exception"));
+
+
+            // Act
+            var result = await _sut.CreateProductController(newProduct);
 
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
             Assert.Equal(500, statusCodeResult.StatusCode);
         }
+
+
+        //_____________________________________________________________________________________________________
+
+
+        [Fact]
+        public async void Update_shouldReturnStatusCode200_WhenDataIsSaved()
+        {
+            // Arrange
+            int productId = 1;
+            UpdateProduct updateProduct = new UpdateProduct
+            {
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+
+            ProductResponse product = new ProductResponse
+            {
+                ProductId = productId,
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+            _productService
+                .Setup(s => s.UpdateProductService(It.IsAny<int>(), It.IsAny<UpdateProduct>()))
+                .ReturnsAsync(product);
+
+
+            // Act
+            var result = await _sut.UpdateProductController(productId, updateProduct);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(200, statusCodeResult.StatusCode);
+        }
+
+
+        [Fact]
+        public async void Update_shouldReturnStatusCode500_WhenExeptionIsRaised()
+        {
+            // Arrange
+            int productId = 1;
+            UpdateProduct updateProduct = new UpdateProduct
+            {
+                Name = "GIGABYTE FI32U",
+                Price = 8575,
+                Quantity = 6,
+                Desciption = "LED-skærm"
+            };
+
+
+            _productService
+                .Setup(s => s.UpdateProductService(It.IsAny<int>(), It.IsAny<UpdateProduct>()))
+                .ReturnsAsync(() => throw new System.Exception("This is an exception"));
+
+
+            // Act
+            var result = await _sut.UpdateProductController(productId, updateProduct);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
+
+
+        //_____________________________________________________________________________________________________
+        
+
+
+        [Fact]
+        public async void Delete_shouldReturnStatusCode204_WhenProductIsDeleted()
+        {
+            // Arrange
+            int productId = 1;
+
+            _productService
+                .Setup(s => s.DeleteProductService(It.IsAny<int>()))
+                .ReturnsAsync(true);
+
+
+            // Act
+            var result = await _sut.DeleteProductController(productId);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(204, statusCodeResult.StatusCode);
+        }
+
+
+        [Fact]
+        public async void Delete_shouldReturnStatusCode500_WhenExeptionIsRaised()
+        {
+            // Arrange
+            int productId = 1;
+
+            _productService
+                .Setup(s => s.DeleteProductService(It.IsAny<int>()))
+                .ReturnsAsync(() => throw new System.Exception("This is an exception"));
+
+
+            // Act
+            var result = await _sut.DeleteProductController(productId);
+
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
+
     }
+
+
+
 }

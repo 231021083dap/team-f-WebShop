@@ -12,14 +12,14 @@ namespace team_f_WebShop.API.Database.Entities
         [Key]
         public int ProductId { get; set; }
 
-        [Column(TypeName = "nvarchar(32)")]
+        [Column(TypeName = "nvarchar(64)")]
         public string Name { get; set; }
 
         public int Price { get; set; }
 
         public int Quantity { get; set; }
 
-        [Column(TypeName = "nvarchar(32)")]
+        [Column(TypeName = "nvarchar(128)")]
         public string Desciption { get; set; }
     }
 }

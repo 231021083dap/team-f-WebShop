@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace team_f_WebShop.API.DTOs.Requests
 {
-    public class NewProduct
+    public class UpdateProduct
     {
         [Required]
         [MinLength(1, ErrorMessage = "Product name cant be less then 1 char")]

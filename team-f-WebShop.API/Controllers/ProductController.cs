@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.DTOs.Requests;
 using team_f_WebShop.API.DTOs.Responses;
 using team_f_WebShop.API.Services;
 
@@ -20,6 +21,8 @@ namespace team_f_WebShop.API.Controllers
         {
             _productService = productService;
         }
+
+
 
 
 
@@ -72,20 +75,19 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
-
             
         [HttpPost]
-        public async Task<IActionResult> CreateProductController(Product product)
+        public async Task<IActionResult> CreateProductController([FromBody] NewProduct newProduct)
         {
             try
             {
-                var newProduct = await _productService.CreateProductService(product);
+                ProductResponse product = await _productService.CreateProductService(newProduct);
 
-                if (newProduct == null) 
+                if (product == null) 
                 {
-                    return BadRequest("Product ERROR.."); // code 400
+                    return Problem("Product ERROR..");   // code 500
                 }
-                return Ok(newProduct);
+                return Ok(product);
             }
             catch (Exception ex)
             {
@@ -96,16 +98,19 @@ namespace team_f_WebShop.API.Controllers
 
 
         [HttpPut("{productId}")]
-        public async Task<IActionResult> UpdateProductController([FromRoute] int productId, [FromBody] Product product) 
+        public async Task<IActionResult> UpdateProductController([FromRoute] int productId, [FromBody] UpdateProduct updateProduct) 
         {
             try
             {
-                var updateProduct = await _productService.UpdateProductService(productId, product);
-                if (updateProduct == null)
+                ProductResponse product = await _productService.UpdateProductService(productId, updateProduct);
+
+
+                if (product == null)
                 {
-                    return BadRequest("Update failed.."); // code 400
+                    return Problem("Product was not updated, something went wrong");
                 }
-                return Ok(updateProduct);
+                return Ok(product);
+
             }
             catch (Exception ex)
             {
@@ -122,12 +127,12 @@ namespace team_f_WebShop.API.Controllers
             {
                 var deleteProduct = await _productService.DeleteProductService(productId);
 
-                if (deleteProduct == false) // <====================================
+                if (!deleteProduct) 
                 {
-                    return BadRequest("Delete Failed.."); // code 400
+                    return Problem("Product was not deleted, something went wrong");
                 }
 
-                return Ok(deleteProduct); // code 200 success
+                return NoContent();
             }
             catch (Exception ex)
             {

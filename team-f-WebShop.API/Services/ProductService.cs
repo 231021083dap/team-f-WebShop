@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.DTOs.Requests;
 using team_f_WebShop.API.DTOs.Responses;
 using team_f_WebShop.API.Repositories;
 
@@ -12,8 +13,8 @@ namespace team_f_WebShop.API.Services
     {
         Task<List<ProductResponse>> GetAllProductService();
         Task<ProductResponse> GetByIdProductService(int productId);
-        Task<ProductResponse> CreateProductService(Product product);
-        Task<ProductResponse> UpdateProductService(int productId, Product product);
+        Task<ProductResponse> CreateProductService(NewProduct newProduct);
+        Task<ProductResponse> UpdateProductService(int productId, UpdateProduct updateproduct);
         Task<bool> DeleteProductService(int productId);
     }
 
@@ -58,7 +59,7 @@ namespace team_f_WebShop.API.Services
         }
 
 
-        public async Task<ProductResponse> CreateProductService(Product newProduct)
+        public async Task<ProductResponse> CreateProductService(NewProduct newProduct)
         {
             Product product = new Product
             {
@@ -81,7 +82,7 @@ namespace team_f_WebShop.API.Services
         }
 
 
-        public async Task<ProductResponse> UpdateProductService(int productId, Product updateProduct)
+        public async Task<ProductResponse> UpdateProductService(int productId, UpdateProduct updateProduct)
         {
             Product product = new Product
             {
@@ -107,7 +108,7 @@ namespace team_f_WebShop.API.Services
         public async Task<bool> DeleteProductService(int productId)
         {
             var result = await _productRepository.DeleteProductRepository(productId);
-            return (result != null);
+            return (result != null);   // true
         }
 
     }

@@ -38,7 +38,6 @@ namespace team_f_WebShop.API.Repositories
                 .ToListAsync();
         }
 
-
         public async Task<Product> GetByIdProductRepository(int productId)
         {
             return await _context.Product
