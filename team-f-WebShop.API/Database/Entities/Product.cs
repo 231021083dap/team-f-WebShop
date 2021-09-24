@@ -10,16 +10,22 @@ namespace team_f_WebShop.API.Database.Entities
     public class Product
     {
         [Key]
+        [Required]
         public int ProductId { get; set; }
 
-        [Column(TypeName = "nvarchar(64)")]
+        [Required]
+        [Column(TypeName = "nvarchar(128)")]
         public string Name { get; set; }
 
+        [Required]
+        [Range(1, int.MaxValue)]
         public int Price { get; set; }
 
+        [Required]
+        [Range(1, int.MaxValue)]
         public int Quantity { get; set; }
 
-        [Column(TypeName = "nvarchar(128)")]
+        [Column(TypeName = "nvarchar(256)")]
         public string Desciption { get; set; }
     }
 }

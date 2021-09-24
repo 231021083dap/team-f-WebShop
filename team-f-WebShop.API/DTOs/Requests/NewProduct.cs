@@ -10,7 +10,7 @@ namespace team_f_WebShop.API.DTOs.Requests
     {
         [Required]
         [MinLength(1, ErrorMessage = "Product name cant be less then 1 char")]
-        [StringLength(64, ErrorMessage = "Product name must be less then 64 chars")]
+        [StringLength(128, ErrorMessage = "Product name must be less then 128 chars")]
         public string Name { get; set; }
 
         [Required]
@@ -22,7 +22,7 @@ namespace team_f_WebShop.API.DTOs.Requests
         public int Quantity { get; set; }
 
         [MinLength(1, ErrorMessage = "Product description cant be less then 1 char")]
-        [StringLength(128, ErrorMessage = "Product description must be less then 128 chars")]
+        [StringLength(256, ErrorMessage = "Product description must be less then 256 chars")]
         public string Desciption { get; set; }
     }
 }
