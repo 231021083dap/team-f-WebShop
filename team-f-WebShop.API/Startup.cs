@@ -32,6 +32,8 @@ namespace team_f_WebShop.API
         {
 
 
+
+
             // added scopes
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
@@ -41,6 +43,8 @@ namespace team_f_WebShop.API
             // Connection string "Default"
             services.AddDbContext<WebShopProjectContext>(
                 a => a.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+
 
 
 

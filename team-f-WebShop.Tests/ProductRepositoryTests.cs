@@ -31,6 +31,7 @@ namespace team_f_WebShop.Tests
 
 
 
+        // GET ALL
 
         [Fact]
         public async Task GetAll_ShouldReturnListOfProducts_WhenProductsExists()
@@ -88,6 +89,7 @@ namespace team_f_WebShop.Tests
 
         //________________________________________________________________________________________
 
+        // GET BY ID
 
         [Fact]
         public async Task GeById_ShouldReturnTheProduct_IfProductExists()
@@ -130,6 +132,10 @@ namespace team_f_WebShop.Tests
             Assert.Null(result);
         }
 
+
+        //________________________________________________________________________________________
+
+        // CREATE
 
         [Fact]
         public async Task Create_ShouldAddIdToProduct_WhenSavingToDatabase()
@@ -184,7 +190,7 @@ namespace team_f_WebShop.Tests
 
         // ________________________________________________________________________________________
 
-
+        // UPDATE
 
         [Fact]
         public async Task Update_ShouldChangeValuesOnProduct_WhenProductExists()
@@ -256,7 +262,7 @@ namespace team_f_WebShop.Tests
 
         // ________________________________________________________________________________________
 
-
+        // DELETE
 
         [Fact]
         public async Task Delete_ShouldReturnDeletedProduct_WhenProductIsDeleted()
@@ -289,10 +295,6 @@ namespace team_f_WebShop.Tests
         }
 
 
-        // ________________________________________________________________________________________
-
-
-
         [Fact]
         public async Task Delete_ShouldReturnNull_WhenProductDoesNotExist()
         {
@@ -308,6 +310,5 @@ namespace team_f_WebShop.Tests
             // Assert
             Assert.Null(result);
         }
-
     }
 }

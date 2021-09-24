@@ -25,6 +25,7 @@ namespace team_f_WebShop.Tests
 
 
 
+        // GET ALL
 
         [Fact]
         public async void GetAll_shouldReturnStatusCode200_WhenDataExists()
@@ -125,8 +126,7 @@ namespace team_f_WebShop.Tests
 
         // _______________________________________________________________________________________________________
 
-
-        // SKAL RETTES
+        // GET BY ID
 
         [Fact]
         public async void GetById_shouldReturnStatusCode200_WhenDataExists()
@@ -198,7 +198,7 @@ namespace team_f_WebShop.Tests
 
         //_____________________________________________________________________________________________________
 
-
+        // CREATE
 
         [Fact]
         public async void Create_shouldReturnStatusCode200_WhenDataIsCreated()
@@ -267,6 +267,7 @@ namespace team_f_WebShop.Tests
 
         //_____________________________________________________________________________________________________
 
+        // UPDATE
 
         [Fact]
         public async void Update_shouldReturnStatusCode200_WhenDataIsSaved()
@@ -338,7 +339,7 @@ namespace team_f_WebShop.Tests
 
         //_____________________________________________________________________________________________________
         
-
+        // DELETE
 
         [Fact]
         public async void Delete_shouldReturnStatusCode204_WhenProductIsDeleted()
@@ -380,10 +381,5 @@ namespace team_f_WebShop.Tests
             var statusCodeResult = (IStatusCodeActionResult)result;
             Assert.Equal(500, statusCodeResult.StatusCode);
         }
-
-
     }
-
-
-
 }

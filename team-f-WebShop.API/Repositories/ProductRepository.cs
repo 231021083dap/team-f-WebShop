@@ -31,19 +31,23 @@ namespace team_f_WebShop.API.Repositories
 
 
 
-
+        // GET ALL
         public async Task<List<Product>> GetAllProductRepository()
         {
             return await _context.Product
                 .ToListAsync();
         }
 
+
+        // GET BY ID
         public async Task<Product> GetByIdProductRepository(int productId)
         {
             return await _context.Product
                 .FirstOrDefaultAsync(a => a.ProductId == productId);
         }
 
+
+        // CREATE
         public async Task<Product> CreateProductRepository(Product product)
         {
             _context.Product.Add(product);
@@ -51,6 +55,8 @@ namespace team_f_WebShop.API.Repositories
             return product;
         }
 
+
+        // UPDATE
         public async Task<Product> UpdateProductRepository(int productId, Product product)
         {
             Product updateProduct = await _context.Product.FirstOrDefaultAsync(a => a.ProductId == productId);
@@ -65,6 +71,8 @@ namespace team_f_WebShop.API.Repositories
             return updateProduct;
         }
 
+
+        // DELETE
         public async Task<Product> DeleteProductRepository(int productId)
         {
             Product product = await _context.Product.FirstOrDefaultAsync(a => a.ProductId == productId);

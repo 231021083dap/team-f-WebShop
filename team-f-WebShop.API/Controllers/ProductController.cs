@@ -25,8 +25,8 @@ namespace team_f_WebShop.API.Controllers
 
 
 
-
-        [HttpGet]
+        // GET ALL
+        [HttpGet] 
         public async Task<IActionResult> GetAllProductController()
         {
             try
@@ -53,7 +53,7 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
-
+        // GET BY ID
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetByIdProductController([FromRoute] int productId)
         {
@@ -75,7 +75,7 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
-            
+        // CREATE
         [HttpPost]
         public async Task<IActionResult> CreateProductController([FromBody] NewProduct newProduct)
         {
@@ -96,7 +96,7 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
-
+        // UPDATE
         [HttpPut("{productId}")]
         public async Task<IActionResult> UpdateProductController([FromRoute] int productId, [FromBody] UpdateProduct updateProduct) 
         {
@@ -119,7 +119,7 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
-
+        // DELETE
         [HttpDelete("{productId}")]
         public async Task<IActionResult> DeleteProductController([FromRoute] int productId) 
         {
@@ -139,6 +139,5 @@ namespace team_f_WebShop.API.Controllers
                 return Problem(ex.Message);
             }
         }
-
     }
 }

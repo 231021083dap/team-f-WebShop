@@ -13,11 +13,12 @@ namespace team_f_WebShop.API.Database
         public WebShopProjectContext(DbContextOptions<WebShopProjectContext> options) : base(options) { }
 
 
-
+        // Product Table
         public DbSet<Product> Product { get; set; }
 
 
 
+        // 2 Products ADDED before creating DATABASE
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(

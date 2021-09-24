@@ -26,6 +26,7 @@ namespace team_f_WebShop.Tests
 
 
 
+        // GET ALL
 
         [Fact]
         public async void GetAll_ShouldReturnListOfProductResponses_WhenProductsExist()
@@ -66,7 +67,6 @@ namespace team_f_WebShop.Tests
         }
 
 
-
         [Fact]
         public async void GetAll_ShouldReturnEmptyListOfProductResponses_WhenNoProductsExists()
         {
@@ -89,6 +89,7 @@ namespace team_f_WebShop.Tests
 
         // ______________________________________________________________________________
 
+        // GET BY ID
 
         [Fact]
         public async void GetById_ShouldReturnAProduct_WhenProductExists()
@@ -145,7 +146,7 @@ namespace team_f_WebShop.Tests
 
         // ______________________________________________________________________________
 
-
+        // CREATE
 
         [Fact]
         public async void Create_ShouldReturnProductResponse_WhenCreateIsSuccess()
@@ -191,7 +192,7 @@ namespace team_f_WebShop.Tests
 
         // ______________________________________________________________________________
 
-
+        // UPDATE
 
         [Fact]
         public async void Update_ShouldReturnUpdatedProductResponse_WhenUpdateIsSuccess()
@@ -272,6 +273,7 @@ namespace team_f_WebShop.Tests
 
         // _____________________________________________________________________________
 
+        // DELETE
 
         [Fact]
         public async void Delete_ShouldReturnTrue_WhenProductDeleteIsSuccess()
@@ -300,5 +302,4 @@ namespace team_f_WebShop.Tests
             Assert.True(result);
         }
     }
-        
 }

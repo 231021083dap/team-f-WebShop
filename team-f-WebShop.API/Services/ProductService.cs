@@ -30,7 +30,7 @@ namespace team_f_WebShop.API.Services
 
 
 
-
+        // GET ALL
         public async Task<List<ProductResponse>> GetAllProductService()
         {
             List<Product> products = await _productRepository.GetAllProductRepository();
@@ -45,6 +45,7 @@ namespace team_f_WebShop.API.Services
         }
 
 
+        // GET BY ID
         public async Task<ProductResponse> GetByIdProductService(int productId)
         {
             Product product = await _productRepository.GetByIdProductRepository(productId);
@@ -59,6 +60,7 @@ namespace team_f_WebShop.API.Services
         }
 
 
+        // CREATE
         public async Task<ProductResponse> CreateProductService(NewProduct newProduct)
         {
             Product product = new Product
@@ -82,6 +84,7 @@ namespace team_f_WebShop.API.Services
         }
 
 
+        // UPDATE
         public async Task<ProductResponse> UpdateProductService(int productId, UpdateProduct updateProduct)
         {
             Product product = new Product
@@ -105,11 +108,11 @@ namespace team_f_WebShop.API.Services
         }
 
 
+        // DELETE
         public async Task<bool> DeleteProductService(int productId)
         {
             var result = await _productRepository.DeleteProductRepository(productId);
             return (result != null);   // true
         }
-
     }
 }
