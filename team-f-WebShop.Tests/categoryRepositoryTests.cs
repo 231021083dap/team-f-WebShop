@@ -20,7 +20,7 @@ namespace team_f_WebShop.Tests
         public categoryRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<WebShopProjectContext>()
-                .UseInMemoryDatabase(databaseName: "WebShopProject")
+                .UseInMemoryDatabase(databaseName: "WebShopProjectCategory")
                 .Options;
 
             _context = new WebShopProjectContext(_options);

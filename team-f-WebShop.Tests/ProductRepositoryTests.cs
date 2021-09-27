@@ -21,7 +21,7 @@ namespace team_f_WebShop.Tests
         public ProductRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<WebShopProjectContext>()
-                .UseInMemoryDatabase(databaseName: "WebShopProject")
+                .UseInMemoryDatabase(databaseName: "WebShopProjectProduct")
                 .Options;
 
             _context = new WebShopProjectContext(_options);
