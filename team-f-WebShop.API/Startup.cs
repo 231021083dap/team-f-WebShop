@@ -50,6 +50,13 @@ namespace team_f_WebShop.API
 
 
             services.AddControllers();
+            services.AddScoped<IcategoryRepository, categoryRepository>();
+
+            services.AddDbContext<WebShopProjectContext>(
+                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddScoped<IcategoryService, categoryService>();
+               
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "team_f_WebShop.API", Version = "v1" });
