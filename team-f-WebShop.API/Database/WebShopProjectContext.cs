@@ -9,18 +9,36 @@ namespace team_f_WebShop.API.Database
 {
     public class WebShopProjectContext : DbContext
     {
+
         public WebShopProjectContext() { }
         public WebShopProjectContext(DbContextOptions<WebShopProjectContext> options) : base(options) { }
 
 
-        // Product Table
+        // Product/category Table
         public DbSet<Product> Product { get; set; }
+        public DbSet<category> category { get; set; }
+
 
 
 
         // 2 Products ADDED before creating DATABASE
+        // 2 Categories ADDED before creating DATABASE
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
+            
+             modelBuilder.Entity<category>().HasData(
+                new category
+                {
+                    Id = 1,
+                    categoryName = "Computer"
+                },
+                new category
+                {
+                    Id = 2,
+                    categoryName = "Screen"
+                });  
+            
             modelBuilder.Entity<Product>().HasData(
 
                 new Product
