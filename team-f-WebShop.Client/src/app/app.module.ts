@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategorypageComponent } from './categorypage/categorypage.component';
+import { CategoryComponent } from './Admin/category/category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategorypageComponent
+    CategorypageComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

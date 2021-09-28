@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategorypageComponent } from './categorypage/categorypage.component';
 
 const routes: Routes = [
-  {path:'', component: CategorypageComponent}
+  {path:'', component: CategorypageComponent},
+  {path:'admin/categorys', component:CategorypageComponent}
 ];
 
 @NgModule({
