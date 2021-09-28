@@ -1,1 +1,14 @@
 <p>category works!</p>
+
+<p>CategoryName</p>
+<input [(ngModel)]='category.categoryName'>
+<button (click)="save()">Gem</button>
+<button (click)="cancel()">Annuller</button>
+
+<ul>
+  <li *ngFor="let category of categorys">
+    <button (click)="edit(category)">Ret</button>
+    <button (click)="delete(category)">Slet</button>
+    {{category.categoryName}}
+  </li>
+</ul>
