@@ -29,7 +29,8 @@ export class CategoryComponent implements OnInit {
 
   delete(category:category):void{
     if(confirm('Er du sikker på du vil slette?')){
-      // her sletter vi
+      this.CategoryService.deleteCategory(category.id)
+      .subscribe(() => {this.getCategorys()});
     }
   }
 
@@ -38,6 +39,13 @@ export class CategoryComponent implements OnInit {
   }
 
   save():void{
+    if(this.category.id == 0){
+      // opretter
+    }
+    else
+    {
+      // retter
+    }
 
   }
 
