@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { category } from '../models';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-categorypage',
@@ -10,11 +11,11 @@ export class CategorypageComponent implements OnInit {
 
   categorys: category[] = [];
 
-  constructor() { }
+  constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.categorys.push({ id:1, categoryName:'Computer'} as category);
-    this.categorys.push({ id:2, categoryName:'Screen'} as category);
+    this.categoryService.getCategorys()
+      .subscribe(a => this.categorys = a);
   }
 
 }

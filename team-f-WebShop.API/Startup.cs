@@ -20,6 +20,7 @@ namespace team_f_WebShop.API
 {
     public class Startup
     {
+        private readonly string CORSRules = "_CORSRules";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +33,16 @@ namespace team_f_WebShop.API
         {
 
 
-
+        services.AddCors(options =>
+         {
+             options.AddPolicy(name: CORSRules,
+                 builder =>
+                 {
+                     builder.WithOrigins("http://localhost:4200")
+                     .AllowAnyHeader()
+                     .AllowAnyMethod();
+                 });
+         });
 
             // added scopes
             services.AddScoped<IProductService, ProductService>();
@@ -75,6 +85,8 @@ namespace team_f_WebShop.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(CORSRules);
 
             app.UseRouting();
 
