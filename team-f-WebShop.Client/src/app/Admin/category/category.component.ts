@@ -40,11 +40,16 @@ export class CategoryComponent implements OnInit {
 
   save():void{
     if(this.category.id == 0){
-      // opretter
+      this.CategoryService.addCategory(this.category)
+        .subscribe(a => {
+          this.categorys.push(a);
+          this.cancel();
+        });
     }
     else
     {
-      // retter
+      this.CategoryService.updateCategory(this.category.id, this.category)
+      .subscribe(() => {this.cancel()})
     }
 
   }
