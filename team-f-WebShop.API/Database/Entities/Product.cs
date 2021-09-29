@@ -26,6 +26,6 @@ namespace team_f_WebShop.API.Database.Entities
         public int Quantity { get; set; }
 
         [Column(TypeName = "nvarchar(256)")]
-        public string Desciption { get; set; }
+        public string Description { get; set; }
     }
 }

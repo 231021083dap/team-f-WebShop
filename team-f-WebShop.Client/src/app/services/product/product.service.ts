@@ -11,9 +11,11 @@ export class ProductService {
 
   private apiUrl = "https://localhost:5001/api/Product";
 
+
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
+
 
   getAllProducts(): Observable<Product[]>{
     return this.http.get<Product[]>(this.apiUrl);

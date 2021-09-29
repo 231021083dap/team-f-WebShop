@@ -2,7 +2,7 @@
 
 namespace team_f_WebShop.API.Migrations
 {
-    public partial class fraPendingMaster : Migration
+    public partial class forAngular : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,7 @@ namespace team_f_WebShop.API.Migrations
                     Name = table.Column<string>(type: "nvarchar(128)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Desciption = table.Column<string>(type: "nvarchar(256)", nullable: true)
+                    Description = table.Column<string>(type: "nvarchar(256)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -37,7 +37,7 @@ namespace team_f_WebShop.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Product",
-                columns: new[] { "ProductId", "Desciption", "Name", "Price", "Quantity" },
+                columns: new[] { "ProductId", "Description", "Name", "Price", "Quantity" },
                 values: new object[,]
                 {
                     { 1, "LED-skærm", "GIGABYTE FI32U", 8575, 6 },

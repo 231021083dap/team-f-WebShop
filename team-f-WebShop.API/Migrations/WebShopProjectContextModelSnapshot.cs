@@ -25,7 +25,7 @@ namespace team_f_WebShop.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Desciption")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("Name")
@@ -46,7 +46,7 @@ namespace team_f_WebShop.API.Migrations
                         new
                         {
                             ProductId = 1,
-                            Desciption = "LED-skærm",
+                            Description = "LED-skærm",
                             Name = "GIGABYTE FI32U",
                             Price = 8575,
                             Quantity = 6
@@ -54,7 +54,7 @@ namespace team_f_WebShop.API.Migrations
                         new
                         {
                             ProductId = 2,
-                            Desciption = "3840 x 2160 (4K)",
+                            Description = "3840 x 2160 (4K)",
                             Name = "GIGABYTE M28U",
                             Price = 5999,
                             Quantity = 13

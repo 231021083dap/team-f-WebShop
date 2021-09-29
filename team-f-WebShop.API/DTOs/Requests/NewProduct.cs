@@ -23,6 +23,6 @@ namespace team_f_WebShop.API.DTOs.Requests
 
         [MinLength(1, ErrorMessage = "Product description cant be less then 1 char")]
         [StringLength(256, ErrorMessage = "Product description must be less then 256 chars")]
-        public string Desciption { get; set; }
+        public string Description { get; set; }
     }
 }

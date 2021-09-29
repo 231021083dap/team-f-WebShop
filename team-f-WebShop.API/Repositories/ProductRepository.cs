@@ -65,7 +65,7 @@ namespace team_f_WebShop.API.Repositories
                 updateProduct.Name = product.Name;
                 updateProduct.Price = product.Price;
                 updateProduct.Quantity = product.Quantity;
-                updateProduct.Desciption = product.Desciption;
+                updateProduct.Description = product.Description;
                 await _context.SaveChangesAsync();
             }
             return updateProduct;

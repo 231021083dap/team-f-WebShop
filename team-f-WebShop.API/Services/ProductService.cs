@@ -40,7 +40,7 @@ namespace team_f_WebShop.API.Services
                 Name = a.Name,
                 Price = a.Price,
                 Quantity = a.Quantity,
-                Desciption = a.Desciption
+                Description = a.Description
             }).ToList();
         }
 
@@ -55,7 +55,7 @@ namespace team_f_WebShop.API.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
-                Desciption = product.Desciption
+                Description = product.Description
             };
         }
 
@@ -68,7 +68,7 @@ namespace team_f_WebShop.API.Services
                 Name = newProduct.Name,
                 Price = newProduct.Price,
                 Quantity = newProduct.Quantity,
-                Desciption = newProduct.Desciption
+                Description = newProduct.Description
             };
 
             product = await _productRepository.CreateProductRepository(product);
@@ -79,7 +79,7 @@ namespace team_f_WebShop.API.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
-                Desciption = product.Desciption
+                Description = product.Description
             };
         }
 
@@ -92,7 +92,7 @@ namespace team_f_WebShop.API.Services
                 Name = updateProduct.Name,
                 Price = updateProduct.Price,
                 Quantity = updateProduct.Quantity,
-                Desciption = updateProduct.Desciption
+                Description = updateProduct.Description
             };
 
             product = await _productRepository.UpdateProductRepository(productId, product);
@@ -103,7 +103,7 @@ namespace team_f_WebShop.API.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
-                Desciption = product.Desciption
+                Description = product.Description
             };
         }
 

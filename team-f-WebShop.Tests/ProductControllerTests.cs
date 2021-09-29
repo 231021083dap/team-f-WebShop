@@ -39,7 +39,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             });
 
             Products.Add(new ProductResponse
@@ -48,7 +48,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE M28U",
                 Price = 5999,
                 Quantity = 13,
-                Desciption = "3840 x 2160 (4K)"
+                Description = "3840 x 2160 (4K)"
             });
 
             _productService
@@ -139,7 +139,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             }; 
 
             _productService
@@ -210,7 +210,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
 
@@ -220,7 +220,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             _productService
@@ -247,7 +247,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             _productService
@@ -279,7 +279,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
 
@@ -289,7 +289,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             _productService
@@ -317,7 +317,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
 
