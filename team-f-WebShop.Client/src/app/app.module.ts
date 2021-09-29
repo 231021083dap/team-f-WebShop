@@ -8,6 +8,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavigationBarComponent } from './components/shared/navigation-bar/navigation-bar.component';
 import { AdminProductComponent } from './components/ADMIN/admin-product/admin-product.component';
+import { ProductDetailsComponent } from './components/ADMIN/product-details/product-details.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { AdminProductComponent } from './components/ADMIN/admin-product/admin-pr
     HeaderComponent,
     FooterComponent,
     NavigationBarComponent,
-    AdminProductComponent
+    AdminProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule   //similar to add.scoped in api
+    HttpClientModule,   //similar to add.scoped in api
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

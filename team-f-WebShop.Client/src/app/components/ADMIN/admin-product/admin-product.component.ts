@@ -17,7 +17,7 @@ export class AdminProductComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts()
+    this.productService.getAllProductsService()
       .subscribe(a => this.products = a);
     // push method with object of 
     // similar to "new product = ..." 

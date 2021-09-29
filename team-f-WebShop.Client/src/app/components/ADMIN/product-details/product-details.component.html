@@ -1,0 +1,33 @@
+<p>product-details works!</p>
+
+<div>
+    <label>Name</label>
+    <input [(ngModel)]="product.name">
+</div>
+
+<div>
+    <label>Price</label>
+    <input [(ngModel)]="product.price">
+</div>
+
+<div>
+    <label>Quantity</label>
+    <input [(ngModel)]="product.quantity">
+</div>
+
+<div>
+    <label>Description</label>
+    <input [(ngModel)]="product.description">
+</div>
+
+<button (Click)="save()">Save</button>
+<button (Click)="cancel()">Cancel</button>
+
+
+<ul>
+    <li *ngFor="let product og products">
+        <button (Click)="editProduct(product)">Edit</button>
+        <button (Click)="deleteProduct(product)">Delete</button>
+        {{product.name}} {{product.price}} {{product.quantity}} {{product.description}}
+    </li>
+</ul>
