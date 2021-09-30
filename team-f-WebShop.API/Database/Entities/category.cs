@@ -13,5 +13,7 @@ namespace team_f_WebShop.API.Database.Entities
         public int Id { get; set; }
         [Column(TypeName = "nvarchar(32)")]
         public string categoryName { get; set; }
+        
+        
     }
 }
