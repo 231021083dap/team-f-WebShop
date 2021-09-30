@@ -27,5 +27,11 @@ namespace team_f_WebShop.API.Database.Entities
 
         [Column(TypeName = "nvarchar(256)")]
         public string Description { get; set; }
+
+
+        [ForeignKey("category.Id")]
+        public int Id { get; set; }
+
+        public category category { get; set; }
     }
 }

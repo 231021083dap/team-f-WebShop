@@ -12,9 +12,7 @@ export class AdminProductComponent implements OnInit {
 
   products: Product[] = []; 
 
-  constructor(
-    private productService: ProductService
-   ) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.productService.getAllProductsService()
