@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { CategorypageComponent } from './categorypage/categorypage.component';
 import { CategoryComponent } from './Admin/category/category.component';
 import { FormsModule } from '@angular/forms';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategorypageComponent,
-    CategoryComponent
+    CategoryComponent,
+    FrontpageComponent
   ],
   imports: [
     BrowserModule,
