@@ -26,6 +26,11 @@ export class ProductService {
     return this.http.get<Product>(`${this.apiUrl}/${productId}`);
   }
 
+  // GET PRODUCT BY CATEGORY
+  getProductByCategoryIdService(Id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}category/${Id}`);
+  }
+
   addProductService(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product, this.httpOptions);
   }

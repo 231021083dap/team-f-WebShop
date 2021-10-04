@@ -7,9 +7,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavigationBarComponent } from './components/shared/navigation-bar/navigation-bar.component';
-import { AdminProductComponent } from './components/ADMIN/admin-product/admin-product.component';
-import { ProductDetailsComponent } from './components/ADMIN/product-details/product-details.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCRUDComponent } from './components/ADMIN/product-crud/product-crud.component';
+import { FrontPageComponent } from './components/Pages/front-page/front-page.component';
+import { ProductPageComponent } from './components/Pages/product-page/product-page.component';
+import { ProductCategoryPageComponent } from './components/Pages/product-category-page/product-category-page.component';
+import { ProductComponent } from './components/InstanceOf/product/product.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,11 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     NavigationBarComponent,
-    AdminProductComponent,
-    ProductDetailsComponent
+    ProductCRUDComponent,
+    FrontPageComponent,
+    ProductPageComponent,
+    ProductCategoryPageComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
