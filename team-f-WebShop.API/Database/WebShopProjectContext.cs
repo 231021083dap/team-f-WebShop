@@ -47,7 +47,9 @@ namespace team_f_WebShop.API.Database
                     Name = "GIGABYTE FI32U",
                     Price = 8575,
                     Quantity = 6,
-                    Desciption = "LED-skærm"
+                    Description = "LED-skærm",
+                    Id = 1
+
                 },
 
                 new Product
@@ -56,7 +58,8 @@ namespace team_f_WebShop.API.Database
                     Name = "GIGABYTE M28U",
                     Price = 5999,
                     Quantity = 13,
-                    Desciption = "3840 x 2160 (4K)"
+                    Description = "3840 x 2160 (4K)",
+                    Id = 2
                 });
         }
 

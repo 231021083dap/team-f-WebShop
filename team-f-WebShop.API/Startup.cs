@@ -20,6 +20,10 @@ namespace team_f_WebShop.API
 {
     public class Startup
     {
+        // for ANGULAR to work
+        readonly string CORSRules = "_CORSRules";
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +35,19 @@ namespace team_f_WebShop.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+            // for ANGULAR to work
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: CORSRules,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+                
 
 
 
@@ -75,6 +92,9 @@ namespace team_f_WebShop.API
             }
 
             app.UseHttpsRedirection();
+
+            // for ANGULAR to work
+            app.UseCors(CORSRules);
 
             app.UseRouting();
 

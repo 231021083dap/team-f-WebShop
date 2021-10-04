@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +24,9 @@ namespace team_f_WebShop.API.DTOs.Requests
 
         [MinLength(1, ErrorMessage = "Product description cant be less then 1 char")]
         [StringLength(256, ErrorMessage = "Product description must be less then 256 chars")]
-        public string Desciption { get; set; }
+        public string Description { get; set; }
+
+        [ForeignKey("category.Id")]
+        public int Id { get; set; }
     }
 }

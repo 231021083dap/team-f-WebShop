@@ -1,0 +1,34 @@
+
+
+<h1>ADMIN Product CRUD page</h1>
+
+<div>
+    <label>Name</label>
+    <input [(ngModel)]="product.name">
+</div>
+
+<div>
+    <label>Price</label>
+    <input [(ngModel)]="product.price">
+</div>
+
+<div>
+    <label>Quantity</label>
+    <input [(ngModel)]="product.quantity">
+</div>
+
+<div>
+    <label>Description</label>
+    <input [(ngModel)]="product.description">
+</div>
+
+<button (click)="save()">Save</button>
+<button (click)="cancel()">Cancel</button>
+
+<ul>
+    <li *ngFor="let product of products">
+        <button (click)="editProduct(product)">Edit</button>
+        <button (click)="deleteProduct(product)">Delete</button>
+        {{product.name}} {{product.price}} {{product.quantity}} {{product.description}}
+    </li>
+</ul>

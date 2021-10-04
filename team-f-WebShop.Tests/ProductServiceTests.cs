@@ -39,7 +39,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             });
 
 
@@ -49,7 +49,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE M28U",
                 Price = 5999,
                 Quantity = 13,
-                Desciption = "3840 x 2160 (4K)"
+                Description = "3840 x 2160 (4K)"
             });
 
 
@@ -103,7 +103,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
 
             };
 
@@ -120,7 +120,7 @@ namespace team_f_WebShop.Tests
             Assert.Equal(product.Name, result.Name);
             Assert.Equal(product.Price, result.Price);
             Assert.Equal(product.Quantity, result.Quantity);
-            Assert.Equal(product.Desciption, result.Desciption);
+            Assert.Equal(product.Description, result.Description);
         }
 
 
@@ -157,7 +157,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             int productId = 1;
@@ -168,7 +168,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             _productRepository
@@ -185,7 +185,7 @@ namespace team_f_WebShop.Tests
             Assert.Equal(newProduct.Name, result.Name);
             Assert.Equal(newProduct.Price, result.Price);
             Assert.Equal(newProduct.Quantity, result.Quantity);
-            Assert.Equal(newProduct.Desciption, result.Desciption);
+            Assert.Equal(newProduct.Description, result.Description);
 
         }
 
@@ -203,7 +203,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             int productId = 1;
@@ -214,7 +214,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             Product product = new Product
@@ -223,7 +223,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             _productRepository
@@ -240,7 +240,7 @@ namespace team_f_WebShop.Tests
             Assert.Equal(productResponse.Name, result.Name);
             Assert.Equal(productResponse.Price, result.Price);
             Assert.Equal(productResponse.Quantity, result.Quantity);
-            Assert.Equal(productResponse.Desciption, result.Desciption);
+            Assert.Equal(productResponse.Description, result.Description);
         }
 
 
@@ -254,7 +254,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             int productId = 1;
@@ -286,7 +286,7 @@ namespace team_f_WebShop.Tests
                 Name = "GIGABYTE FI32U",
                 Price = 8575,
                 Quantity = 6,
-                Desciption = "LED-skærm"
+                Description = "LED-skærm"
             };
 
             _productRepository

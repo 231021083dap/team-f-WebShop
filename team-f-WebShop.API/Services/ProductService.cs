@@ -16,6 +16,7 @@ namespace team_f_WebShop.API.Services
         Task<ProductResponse> CreateProductService(NewProduct newProduct);
         Task<ProductResponse> UpdateProductService(int productId, UpdateProduct updateproduct);
         Task<bool> DeleteProductService(int productId);
+        Task<ProductResponse> GetByCategoryIdProductService(int Id);
     }
 
 
@@ -40,7 +41,12 @@ namespace team_f_WebShop.API.Services
                 Name = a.Name,
                 Price = a.Price,
                 Quantity = a.Quantity,
-                Desciption = a.Desciption
+                Description = a.Description,
+                Category = new ProductCategoryResponse
+                {
+                    joinCategoryId = a.category.Id,
+                    categoryName = a.category.categoryName
+                }
             }).ToList();
         }
 
@@ -55,7 +61,32 @@ namespace team_f_WebShop.API.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
-                Desciption = product.Desciption
+                Description = product.Description,
+                Category = new ProductCategoryResponse
+                {
+                    joinCategoryId = product.category.Id,
+                    categoryName = product.category.categoryName
+                }
+            };
+        }
+
+        // GET PRODUCT BY CATEGORY
+        public async Task<ProductResponse> GetByCategoryIdProductService(int Id)
+        {
+            Product product = await _productRepository.GetByCategoryIdProductRepository(Id);
+
+            return product == null ? null : new ProductResponse
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                Description = product.Description,
+                Category = new ProductCategoryResponse
+                {
+                    joinCategoryId = product.category.Id,
+                    categoryName = product.category.categoryName
+                }
             };
         }
 
@@ -68,7 +99,7 @@ namespace team_f_WebShop.API.Services
                 Name = newProduct.Name,
                 Price = newProduct.Price,
                 Quantity = newProduct.Quantity,
-                Desciption = newProduct.Desciption
+                Description = newProduct.Description
             };
 
             product = await _productRepository.CreateProductRepository(product);
@@ -79,7 +110,7 @@ namespace team_f_WebShop.API.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
-                Desciption = product.Desciption
+                Description = product.Description
             };
         }
 
@@ -92,7 +123,7 @@ namespace team_f_WebShop.API.Services
                 Name = updateProduct.Name,
                 Price = updateProduct.Price,
                 Quantity = updateProduct.Quantity,
-                Desciption = updateProduct.Desciption
+                Description = updateProduct.Description
             };
 
             product = await _productRepository.UpdateProductRepository(productId, product);
@@ -103,7 +134,7 @@ namespace team_f_WebShop.API.Services
                 Name = product.Name,
                 Price = product.Price,
                 Quantity = product.Quantity,
-                Desciption = product.Desciption
+                Description = product.Description
             };
         }
 
