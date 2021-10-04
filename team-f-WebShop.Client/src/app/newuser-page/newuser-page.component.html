@@ -1,0 +1,13 @@
+<form action="" >
+    <div class="container">
+      <h1>Create user</h1> 
+      <hr>  
+      <label for="email"><b>Email</b></label>
+      <input [(ngModel)]="newUser.email" type="text" placeholder="Enter Email" name="email" required>  
+      <label for="psw"><b>Password</b></label>
+      <input [(ngModel)]="newUser.password" type="password" placeholder="Enter Password" name="psw" required>  
+      <div class="clearfix">      
+        <button (click)="create(newUser)" type="submit" class="signupbtn">Login</button>
+      </div>
+    </div>
+</form>
