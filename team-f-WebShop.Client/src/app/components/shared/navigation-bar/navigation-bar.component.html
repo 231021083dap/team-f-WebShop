@@ -1,0 +1,27 @@
+
+
+
+
+<nav>
+    <ul>
+        <li><app-header></app-header></li>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/ADMIN/product-crud">Product CRUD</a></li>  <!-- PRODUCTS CRUD-->
+        <li>
+        <select>
+            <option [value]="0">Choose Category</option>
+            <option [value]="1">PCs</option>
+          </select>
+        </li>
+        <li><a routerlink=" ">Cart</a></li>
+        <li><a routerlink=" ">Log-In</a></li>
+    </ul>
+</nav>
+
+
+<!--
+<select [(ngModel)]="author.id">
+    <option [value]="0">Choose Category</option>
+    <option *ngFor="let category of categorys" [value]="category.Id">{{ category.categoryName }}</option>
+  </select>
+-->
