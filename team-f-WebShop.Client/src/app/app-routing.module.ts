@@ -13,8 +13,8 @@ const routes: Routes = [
   {path:'ADMIN/product-crud', component: ProductCRUDComponent},
   {path:'ADMIN/product-page', component: ProductPageComponent},
   {path:'admin/categorys', component:CategoryComponent},
-  {path: '', component: NewuserPageComponent },
-  //{path:'frontpages', component: FrontpageComponent}
+  //{path: '', component: NewuserPageComponent },
+  
 ];
 
 @NgModule({
