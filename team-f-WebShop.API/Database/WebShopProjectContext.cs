@@ -72,43 +72,61 @@ namespace team_f_WebShop.API.Database
             modelBuilder.Entity<Address>().HasData(
                 new Address
                 {
-                    
+                    Id = 1,
+                    AddressName = "Telegrafvej 9",
+                    ZipCode = 2750,
+                    CityName = "Ballerup",
+                    UserId = 1,
                 },
                 new Address
                 {
-                    
+                    Id = 1,
+                    AddressName = "Engblommevej 23",
+                    ZipCode = 4040,
+                    CityName = "Jyllinge",
+                    UserId = 2,
                 });
 
-            modelBuilder.Entity<OrderItem>().HasData(
+            modelBuilder.Entity<OrderItem>().HasData(            
                 new OrderItem
                 {
-                    
-                },
-                new OrderItem
-                {
-                    
+                    Id = 1,
+                    Price = 5999,     
+                    Quantity = 2,
+                    OrderListId = 1,    
+                    ProductId = 1
                 });
 
 
             modelBuilder.Entity<OrderList>().HasData(
                 new OrderList
                 {
-                    
+                    Id = 2,
+                    OrderDateTime = DateTime.Now,
+                    UserId = 2
                 },
                 new OrderList
                 {
-                    
+                    Id = 1,
+                    OrderDateTime = DateTime.Now,
+                    UserId = 1
                 });
 
 
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
-                    
+                    Id = 1,
+                    Email = "admin@admins.com",
+                    Password = "Passw0rd",
+                    Role = Role.Admin,
                 },
                 new User
                 {
-                    
+                    Id = 2,
+                    Email = "user@users.com",
+                    Password = "Passw0rd",
+                    Role = Role.User
                 });
         }
 
