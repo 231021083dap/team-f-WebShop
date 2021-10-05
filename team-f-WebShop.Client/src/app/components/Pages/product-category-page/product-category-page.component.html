@@ -1,1 +1,13 @@
+
+
+
 <p>product-category-page works!</p>
+
+
+<div class="card" *ngFor="let product of products">
+    <h1>{{ product.name }}</h1>  
+    <p class="price">{{ product.price }}</p>    
+    <a routerLink="/product/{{ product.productId }}">
+        <button>Go to Product Page</button>
+    </a>
+</div>
