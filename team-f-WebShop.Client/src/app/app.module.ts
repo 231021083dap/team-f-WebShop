@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CategorypageComponent } from './categorypage/categorypage.component';
+import { CategoryComponent } from './Admin/category/category.component';
+import { FormsModule } from '@angular/forms';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavigationBarComponent } from './components/shared/navigation-bar/navigation-bar.component';
@@ -17,6 +20,9 @@ import { ProductComponent } from './components/InstanceOf/product/product.compon
 @NgModule({
   declarations: [
     AppComponent,
+    CategorypageComponent,
+    CategoryComponent,
+    FrontpageComponent
     HeaderComponent,
     FooterComponent,
     NavigationBarComponent,

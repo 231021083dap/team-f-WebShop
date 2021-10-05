@@ -50,7 +50,6 @@ namespace team_f_WebShop.API
                 
 
 
-
             // added scopes
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
