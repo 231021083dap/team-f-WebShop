@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrangularAPI.Database.Entities;
+using team_f_WebShop.API.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
