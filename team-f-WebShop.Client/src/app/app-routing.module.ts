@@ -5,7 +5,7 @@ import { CategoryComponent } from './Admin/category/category.component';
 import { ProductCRUDComponent } from './components/ADMIN/product-crud/product-crud.component';
 import { FrontPageComponent } from './components/Pages/front-page/front-page.component';
 import { ProductPageComponent } from './components/Pages/product-page/product-page.component';
-import { NewuserPageComponent } from './newuser-page/newuser-page.component';
+//import { NewuserPageComponent } from './newuser-page/newuser-page.component';
 
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'ADMIN/product-crud', component: ProductCRUDComponent},
   {path:'ADMIN/product-page', component: ProductPageComponent},
   {path:'admin/categorys', component:CategoryComponent},
-  //{path: '', component: NewuserPageComponent },
+  //{path: 'Admin/User-crud', component: NewuserPageComponent },
   
 ];
 
