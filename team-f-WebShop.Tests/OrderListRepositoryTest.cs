@@ -7,18 +7,18 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OrangularTests.OrderListsTest
+namespace team_f_Tests.OrderListsTest
 {
     public class OrderListRepositoryTest
     {
         private readonly OrderListRepository _sut;
-        private readonly OrangularProjectContext _context;
-        private readonly DbContextOptions<OrangularProjectContext> _options;
+        private readonly team-fProjectContext _context;
+        private readonly DbContextOptions<team-fProjectContext> _options;
 
         public OrderListRepositoryTest()
         {
             _options = new DbContextOptionsBuilder<OrangularProjectContext>()
-                .UseInMemoryDatabase(databaseName: "OrangularProject")
+                .UseInMemoryDatabase(databaseName: "Team_f_Project")
                 .Options;
 
             _context = new OrangularProjectContext(_options);

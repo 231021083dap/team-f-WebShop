@@ -6,23 +6,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using OrangularAPI.Database;
-using OrangularAPI.Database.Entities;
-using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.AddressesRepository;
+using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.Helpers;
+using team_f_WebShop.API.Repositories.AddressesRepository;
 
-namespace OrangularTests.AddressesTest
+namespace team_f_Tests.AddressesTest
 {
     public class AddressesRepositoryTests
     {
         private readonly AddressRepository _sut;
-        private readonly OrangularProjectContext _context;
-        private readonly DbContextOptions<OrangularProjectContext> _options;
+        private readonly team-fProjectContext _context;
+        private readonly DbContextOptions<team-fProjectContext> _options;
 
         public AddressesRepositoryTests()
         {
             _options = new DbContextOptionsBuilder<OrangularProjectContext>()
-                .UseInMemoryDatabase(databaseName: "OrangularProjectContextAddresses")
+                .UseInMemoryDatabase(databaseName: "TeamFProjectContextAddresses")
                 .Options;
 
             _context = new OrangularProjectContext(_options);
@@ -73,9 +73,9 @@ namespace OrangularTests.AddressesTest
                 new Address
                 {
                     Id = 2,                    
-                    AddressName = "Hjem Helsingør",
-                    ZipCode = 3000,
-                    CityName = "Helsingør",
+                    AddressName = "hjem",
+                    ZipCode = 4040,
+                    CityName = "Jyllinge",
                     UserId = 2
                 });
 
@@ -162,8 +162,8 @@ namespace OrangularTests.AddressesTest
                 {
                     Id = 1,
                     // UserId = 2,
-                    AddressName = "Hjem Helsingør",
-                    ZipCode = 3000
+                    AddressName = "Hjer",
+                    ZipCode = 4040
                 };
 
                 // Act
@@ -184,8 +184,8 @@ namespace OrangularTests.AddressesTest
                 {
                     Id = 2,
                     // UserId = 2,
-                    AddressName = "Hjem Helsingør",
-                    ZipCode = 3000
+                    AddressName = "Hjem",
+                    ZipCode = 4040
                 };
                 _context.Address.Add(address);
                 await _context.SaveChangesAsync();
@@ -212,8 +212,8 @@ namespace OrangularTests.AddressesTest
                 {
                     Id = updateTargetId,
                     // UserId = 2,
-                    AddressName = "Hjem Helsingør",
-                    ZipCode = 3000
+                    AddressName = "Hjem",
+                    ZipCode = 4040
                 };
 
                 _context.Address.Add(address);

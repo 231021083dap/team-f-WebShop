@@ -1,15 +1,15 @@
-﻿using OrangularAPI.Helpers;
-using OrangularAPI.Controllers;
-using OrangularAPI.DTO.Login.Requests;
-using OrangularAPI.DTO.Users.Responses;
+﻿using team_f_WebShop.API.Helpers;
+using team_f_WebShop.API.Controllers;
+using team_f_WebShop.API.DTO.Login.Requests;
+using team_f_WebShop.API.DTO.Users.Responses;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using System;
 using System.Collections.Generic;
 using Xunit;
-using OrangularAPI.Services.UsersService;
+using team_f_WebShop.API.Services.UsersService;
 
-namespace OrangularTests.UserTest
+namespace team_f_Tests.UserTest
 {
     public class UserControllerTests
     {

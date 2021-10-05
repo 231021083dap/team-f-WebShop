@@ -1,16 +1,16 @@
-﻿using OrangularAPI.Controllers;
-using OrangularAPI.DTO.OrderLists.Requests;
-using OrangularAPI.DTO.OrderLists.Responses;
+﻿using team_f_WebShop.API.Controllers;
+using team_f_WebShop.API.DTO.OrderLists.Requests;
+using team_f_WebShop.API.DTO.OrderLists.Responses;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using System;
 using System.Collections.Generic;
 using Xunit;
-using OrangularAPI.Services.OrderListServices;
-using OrangularAPI.Database.Entities;
-using OrangularAPI.Helpers;
+using team_f_WebShop.API.Services.OrderListServices;
+using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.Helpers;
 
-namespace OrangularTests.OrderListsTest
+namespace team_f_Tests.OrderListsTest
 {
     public class OrderListControllerTests
     {
