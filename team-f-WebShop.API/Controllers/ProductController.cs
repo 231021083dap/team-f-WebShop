@@ -75,6 +75,28 @@ namespace team_f_WebShop.API.Controllers
         }
 
 
+        // GET PRODUCT BY CATEGORY
+        [HttpGet("category/{Id}")]
+        public async Task<IActionResult> GetByCategoryIdProductController([FromRoute] int Id)
+        {
+            try
+            {
+                ProductResponse products = await _productService.GetByCategoryIdProductService(Id);
+
+                if (products == null)
+                {
+                    return NotFound();  // code 204
+                }
+                return Ok(products); // code 200
+
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);  // code 500
+            }
+        }
+
+
         // CREATE
         [HttpPost]
         public async Task<IActionResult> CreateProductController([FromBody] NewProduct newProduct)

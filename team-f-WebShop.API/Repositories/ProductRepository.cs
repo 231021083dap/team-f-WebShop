@@ -16,6 +16,7 @@ namespace team_f_WebShop.API.Repositories
         Task<Product> CreateProductRepository(Product product);
         Task<Product> UpdateProductRepository(int productId, Product product);
         Task<Product> DeleteProductRepository(int productId);
+        Task<Product> GetByCategoryIdProductRepository(int Id);
     }
 
 
@@ -35,6 +36,7 @@ namespace team_f_WebShop.API.Repositories
         public async Task<List<Product>> GetAllProductRepository()
         {
             return await _context.Product
+                .Include(a => a.category) //Includes type  
                 .ToListAsync();
         }
 
@@ -43,9 +45,21 @@ namespace team_f_WebShop.API.Repositories
         public async Task<Product> GetByIdProductRepository(int productId)
         {
             return await _context.Product
+                .Include(a => a.category)
                 .FirstOrDefaultAsync(a => a.ProductId == productId);
         }
 
+
+       
+        //GET PRODUCT BY TYPE
+        public async Task<Product> GetByCategoryIdProductRepository(int Id)  
+        {
+            return await _context.Product
+                .Where(a => a.Id == Id)
+                .Include(a => a.category)
+                .FirstOrDefaultAsync(a => a.Id == Id);
+        }
+        
 
         // CREATE
         public async Task<Product> CreateProductRepository(Product product)
@@ -65,7 +79,7 @@ namespace team_f_WebShop.API.Repositories
                 updateProduct.Name = product.Name;
                 updateProduct.Price = product.Price;
                 updateProduct.Quantity = product.Quantity;
-                updateProduct.Desciption = product.Desciption;
+                updateProduct.Description = product.Description;
                 await _context.SaveChangesAsync();
             }
             return updateProduct;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OrangularAPI.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,10 @@ namespace team_f_WebShop.API.Database
         // Product/category Table
         public DbSet<Product> Product { get; set; }
         public DbSet<category> category { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<OrderItem> orderItem { get; set; }
+        public DbSet<OrderList> orderLists { get; set; }
+        public DbSet<User> User { get; set; }
 
 
 
@@ -38,6 +43,7 @@ namespace team_f_WebShop.API.Database
                     Id = 2,
                     categoryName = "Screen"
                 });  
+
             
             modelBuilder.Entity<Product>().HasData(
 
@@ -47,7 +53,9 @@ namespace team_f_WebShop.API.Database
                     Name = "GIGABYTE FI32U",
                     Price = 8575,
                     Quantity = 6,
-                    Desciption = "LED-skærm"
+                    Description = "LED-skærm",
+                    Id = 1
+
                 },
 
                 new Product
@@ -56,7 +64,51 @@ namespace team_f_WebShop.API.Database
                     Name = "GIGABYTE M28U",
                     Price = 5999,
                     Quantity = 13,
-                    Desciption = "3840 x 2160 (4K)"
+                    Description = "3840 x 2160 (4K)",
+                    Id = 2
+                });
+
+
+            modelBuilder.Entity<Address>().HasData(
+                new Address
+                {
+                    
+                },
+                new Address
+                {
+                    
+                });
+
+            modelBuilder.Entity<OrderItem>().HasData(
+                new OrderItem
+                {
+                    
+                },
+                new OrderItem
+                {
+                    
+                });
+
+
+            modelBuilder.Entity<OrderList>().HasData(
+                new OrderList
+                {
+                    
+                },
+                new OrderList
+                {
+                    
+                });
+
+
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    
+                },
+                new User
+                {
+                    
                 });
         }
 

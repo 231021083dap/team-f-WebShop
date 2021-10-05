@@ -11,6 +11,14 @@ namespace team_f_WebShop.API.DTOs.Responses
         public string Name { get; set; }
         public int Price { get; set; }
         public int Quantity { get; set; }
-        public string Desciption { get; set; }
+        public string Description { get; set; }
+        public ProductCategoryResponse Category { get; set; }
+    }
+
+
+    public class ProductCategoryResponse
+    {
+        public int joinCategoryId { get; set; }
+        public string categoryName { get; set; }
     }
 }
