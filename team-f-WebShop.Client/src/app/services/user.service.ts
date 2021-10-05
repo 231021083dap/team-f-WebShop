@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../_models/user';
+import { User } from '../models';
 import { Observable } from 'rxjs';
 
 
@@ -33,11 +33,7 @@ export class UserService {
   // POST https://localhost:5001/api/User/Create
   create(user : User) : Observable<User> {
 
-    // Opretter objeckt som er kompatibelt med json swagger input:
-    // {
-    //   "email": "victor",
-    //   "password": "Password"
-    // }
+    
     let x = {email: user.email, password: user.password}
     return this.http.post(`${this.endPoint}/Create`, x, this.httpOptions)
   }
