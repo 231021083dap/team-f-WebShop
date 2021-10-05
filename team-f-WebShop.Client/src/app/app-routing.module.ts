@@ -7,7 +7,7 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
 const routes: Routes = [
   {path:'', component: CategorypageComponent},
   {path:'admin/categorys', component:CategoryComponent},
-  {path:'', component: FrontpageComponent}
+  {path:'frontpages', component: FrontpageComponent}
 ];
 
 @NgModule({
