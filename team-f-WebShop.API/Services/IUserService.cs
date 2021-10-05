@@ -1,9 +1,9 @@
-using OrangularAPI.DTO.Login.Requests;
-using OrangularAPI.DTO.Users.Responses;
+using team_f_WebShop.API.DTO.Login.Requests;
+using team_f_WebShop.API.DTO.Users.Responses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.UsersService
+namespace team_f_WebShop.API.Services.UsersService
 {
 
     public interface IUserService

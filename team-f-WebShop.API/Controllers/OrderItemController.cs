@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrangularAPI.DTO.OrderItems.Requests;
-using OrangularAPI.DTO.OrderItems.Responses;
-using OrangularAPI.Services.OrderItemServices;
+using team_f_WebShop.API.DTO.OrderItems.Requests;
+using team_f_WebShop.API.DTO.OrderItems.Responses;
+using team_f_WebShop.API.Services.OrderItemServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangular.Controllers
+namespace team_f_WebShop.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

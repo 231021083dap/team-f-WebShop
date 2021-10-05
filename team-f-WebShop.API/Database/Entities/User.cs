@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using OrangularAPI.Helpers;
+using team_f_WebShop.API.Helpers;
 
 
-namespace OrangularAPI.Database.Entities
+namespace team_f_WebShop.API.Database.Entities
     {
     public class User
     {

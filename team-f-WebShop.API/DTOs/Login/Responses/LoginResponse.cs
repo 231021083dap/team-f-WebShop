@@ -1,10 +1,10 @@
-﻿using OrangularAPI.Helpers;
+﻿using team_f_WebShop.API.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.Login.Responses
+namespace team_f_WebShop.API.DTO.Login.Responses
 {
     public class LoginResponse
     {

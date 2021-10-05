@@ -1,10 +1,10 @@
-﻿using OrangularAPI.Database.Entities;
+﻿using team_f_WebShop.API.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.OrderListsRepository
+namespace team_f_WebShop.API.Repositories.OrderListsRepository
 {
     public interface IOrderListRepository
     {

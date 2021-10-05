@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using OrangularAPI.Database;
-using OrangularAPI.Database.Entities;
+using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.OrderItemsRepository
+namespace team_f_WebShop.API.Repositories.OrderItemsRepository
 {
     public interface IOrderItemRepository
     {

@@ -1,18 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrangularAPI.Database;
-using OrangularAPI.Database.Entities;
+using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.Users
+namespace team_f_WebShop.API.Repositories.Users
 {
     public class UserRepository : IUserRepository
     {
 
-        private readonly OrangularProjectContext _context;
-        public UserRepository(OrangularProjectContext Context)
+        private readonly WebShopProjectContext _context;
+        public UserRepository(WebShopProjectContext context)
         {
             _context = Context;
         }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.DTO.OrderLists.Requests
+namespace team_f_WebShop.API.DTO.OrderLists.Requests
 {
     public class UpdateOrderList
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrangularAPI.DTO.Addresses.Requests;
-using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.Services.AddressServices;
+using team_f_WebShop.API.DTO.Addresses.Requests;
+using team_f_WebShop.API.DTO.Addresses.Responses;
+using team_f_WebShop.API.Services.AddressServices;
 
-namespace OrangularAPI.Controllers
+namespace team_f_WebShop.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

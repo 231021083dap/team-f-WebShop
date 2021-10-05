@@ -1,9 +1,9 @@
-using OrangularAPI.DTO.OrderItems.Requests;
-using OrangularAPI.DTO.OrderItems.Responses;
+using team_f_WebShop.API.DTO.OrderItems.Requests;
+using team_f_WebShop.API.DTO.OrderItems.Responses;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.OrderItemServices
+namespace team_f_WebShop.API.Services.OrderItemServices
 {
     public interface IOrderItemService
     {

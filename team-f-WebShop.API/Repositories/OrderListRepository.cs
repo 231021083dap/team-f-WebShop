@@ -1,16 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrangularAPI.Database;
-using OrangularAPI.Database.Entities;
+using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Database.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Repositories.OrderListsRepository
+namespace team_f_WebShop.API.Repositories.OrderListsRepository
 {
     public class OrderListRepository : IOrderListRepository
     {
-        private readonly OrangularProjectContext _context;
+        private readonly WebShopProjectContext _context;
 
-        public OrderListRepository(OrangularProjectContext context)
+        public OrderListRepository(WebShopProjectContext context)
         {
             _context = context;
         }

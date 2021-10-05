@@ -1,14 +1,14 @@
-using OrangularAPI.Database.Entities;
+using team_f_WebShop.API.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.DTO.Addresses.Requests;
-using OrangularAPI.Repositories.AddressesRepository;
-using OrangularAPI.Repositories.Users;
+using team_f_WebShop.API.DTO.Addresses.Responses;
+using team_f_WebShop.API.DTO.Addresses.Requests;
+using team_f_WebShop.API.Repositories.AddressesRepository;
+using team_f_WebShop.API.Repositories.Users;
 
-namespace OrangularAPI.Services.AddressServices
+namespace team_f_WebShop.API.Services.AddressServices
 {
     public class AddressService : IAddressService
     {

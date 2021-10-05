@@ -1,16 +1,16 @@
 ﻿
-using OrangularAPI.Database.Entities;
-using OrangularAPI.DTO.OrderItems.Requests;
-using OrangularAPI.DTO.OrderItems.Responses;
-using OrangularAPI.Repositories.OrderItemsRepository;
-using OrangularAPI.Repositories.OrderListsRepository;
-using OrangularAPI.Repositories.ProductsRepository;
+using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.DTO.OrderItems.Requests;
+using team_f_WebShop.API.DTO.OrderItems.Responses;
+using team_f_WebShop.API.Repositories.OrderItemsRepository;
+using team_f_WebShop.API.Repositories.OrderListsRepository;
+using team_f_WebShop.API.Repositories.ProductsRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.OrderItemServices
+namespace team_f_WebShop.API.Services.OrderItemServices
 {
     public class OrderItemService : IOrderItemService
     {

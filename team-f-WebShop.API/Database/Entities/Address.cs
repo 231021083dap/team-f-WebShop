@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace OrangularAPI.Database.Entities
+namespace team_f_WebShop.API.Database.Entities
 {
     public class Address
     {

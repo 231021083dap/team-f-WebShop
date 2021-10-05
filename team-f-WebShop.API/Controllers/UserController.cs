@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OrangularAPI.DTO.Login.Requests;
-using OrangularAPI.DTO.Users.Responses;
-using OrangularAPI.Services.UsersService;
+using team_f_WebShop.API.DTO.Login.Requests;
+using team_f_WebShop.API.DTO.Users.Responses;
+using team_f_WebShop.API.Services.UsersService;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Controllers
+namespace team_f_WebShop.API.Controllers
 {
     //[Authorize]
     [Route("api/[controller]")]

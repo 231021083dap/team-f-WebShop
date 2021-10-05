@@ -1,13 +1,13 @@
-﻿using OrangularAPI.Database.Entities;
-using OrangularAPI.DTO.Login.Requests;
-using OrangularAPI.DTO.Users.Responses;
-using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.Users;
+﻿using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.DTO.Login.Requests;
+using team_f_WebShop.API.DTO.Users.Responses;
+using team_f_WebShop.API.Helpers;
+using team_f_WebShop.API.Repositories.Users;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Services.UsersService
+namespace team_f_WebShop.API.Services.UsersService
 {
     public class UserService : IUserService
     {

@@ -1,6 +1,6 @@
-﻿using OrangularAPI.Helpers;
+﻿using team_f_WebShop.API.Helpers;
 
-namespace OrangularAPI.DTO.Addresses.Responses
+namespace team_f_WebShop.API.DTO.Addresses.Responses
 {
     public class AddressUserResponse
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OrangularAPI.DTO.OrderLists.Responses
+namespace team_f_WebShop.API.DTO.OrderLists.Responses
 {
     public class OrderListResponse
     {
