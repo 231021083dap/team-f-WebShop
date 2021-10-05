@@ -1,9 +1,7 @@
-﻿// Orangular
-using OrangularAPI.Database.Entities;
-using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.Users;
-using OrangularAPI.Database;
-// Orangular
+﻿using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.Helpers;
+using team_f_WebShop.API.Repositories.Users;
+using team_f_WebShop.API.Database;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -11,19 +9,19 @@ using Microsoft.EntityFrameworkCore;
 using System;
 
 
-namespace OrangularTests.UserTest
+namespace team_f_Tests.UserTest
 {
    public class UserRepositoryTest
     {
         private readonly UserRepository _sut;
-        private readonly OrangularProjectContext _context;
-        private readonly DbContextOptions<OrangularProjectContext> _options;
+        private readonly teamfProjectContext _context;
+        private readonly DbContextOptions<teamfProjectContext> _options;
         public UserRepositoryTest()
         {
-            _options = new DbContextOptionsBuilder<OrangularProjectContext>()
-            .UseInMemoryDatabase(databaseName: "OrangularUsersDatabase")
+            _options = new DbContextOptionsBuilder<teamfProjectContext>()
+            .UseInMemoryDatabase(databaseName: "team_f_UsersDatabase")
             .Options;
-            _context = new OrangularProjectContext(_options);
+            _context = new teamfProjectContext(_options);
             _sut = new UserRepository(_context);
         }
         // -----------------------------------------------------------------------------------------------------------------------

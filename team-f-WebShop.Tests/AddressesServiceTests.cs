@@ -1,15 +1,15 @@
-using OrangularAPI.Database.Entities;
+using team_f_WebShop.API.Database.Entities;
 using Moq;
 using System.Collections.Generic;
 using Xunit;
 
-using OrangularAPI.Services.AddressServices;
-using OrangularAPI.DTO.Addresses.Requests;
-using OrangularAPI.DTO.Addresses.Responses;
-using OrangularAPI.Repositories.AddressesRepository;
-using OrangularAPI.Repositories.Users;
+using team_f_WebShop.API.Services.AddressServices;
+using team_f_WebShop.API.DTO.Addresses.Requests;
+using team_f_WebShop.API.DTO.Addresses.Responses;
+using team_f_WebShop.API.Repositories.AddressesRepository;
+using team_f_WebShop.API.Repositories.Users;
 
-namespace OrangularTests.AddressesTest
+namespace team_f_Tests.AddressesTest
 {
     public class AddressesServiceTests
     {

@@ -2,16 +2,15 @@
 using System.Threading.Tasks;
 using Moq;
 using Xunit;
-// Orangular
-using OrangularAPI.Database.Entities;
-using OrangularAPI.DTO.Login.Requests;
-using OrangularAPI.DTO.Users.Responses;
-using OrangularAPI.Helpers;
-using OrangularAPI.Repositories.Users;
-using OrangularAPI.Services.UsersService;
-// Orangular
+using team_f_WebShop.API.Database.Entities;
+using team_f_WebShop.API.DTO.Login.Requests;
+using team_f_WebShop.API.DTO.Users.Responses;
+using team_f_WebShop.API.Helpers;
+using team_f_WebShop.API.Repositories.Users;
+using team_f_WebShop.API.Services.UsersService;
 
-namespace OrangularTests.UserTest
+
+namespace team_f_Tests.UserTest
 {
     public class UserServiceTest
     {

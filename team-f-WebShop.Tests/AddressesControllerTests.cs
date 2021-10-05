@@ -1,13 +1,13 @@
 ﻿using Moq;
 using System.Collections.Generic;
 using Xunit;
-using OrangularAPI.Controllers;
+using team_f_WebShop.API.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using OrangularAPI.Services.AddressServices;
-using OrangularAPI.DTO.Addresses.Requests;
-using OrangularAPI.DTO.Addresses.Responses;
+using team_f_WebShop.API.Services.AddressServices;
+using team_f_WebShop.API.DTO.Addresses.Requests;
+using team_f_WebShop.API.DTO.Addresses.Responses;
 
-namespace OrangularTests.AddressesTest
+namespace team_f_Tests.AddressesTest
 {
     public class AddressControllerTests
     {
