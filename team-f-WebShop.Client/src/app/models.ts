@@ -1,3 +1,8 @@
+export interface category{
+  id:number,
+  categoryName: string
+}
+
 export interface Product{
     productId: number,
     name: string,
@@ -7,10 +12,6 @@ export interface Product{
 }
 
 
-export interface category{
-    Id: number,
-    categoryName: string
-}
 
 export interface User {
     id? : number,
@@ -40,3 +41,4 @@ export interface Address {
     cityName?:number,
     user? : User
 }
+
