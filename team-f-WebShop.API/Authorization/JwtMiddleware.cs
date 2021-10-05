@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using OrangularAPI.Helpers;
-using OrangularAPI.Services.UsersService;
+using team_f_WebShop.API.Helpers;
+using team_f_WebShop.API.Services.UsersService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrangularAPI.Authorization
+namespace team_f_WebShop.API.Authorization
 {
     
         public class JwtMiddleware
