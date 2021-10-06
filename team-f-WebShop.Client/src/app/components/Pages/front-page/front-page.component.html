@@ -1,0 +1,13 @@
+
+
+
+
+
+
+<div *ngFor="let product of products | slice:0:3">
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.price }}</p>
+    <a routerLink="/product/{{ product.productId }}">
+        <button>Go to the Product Page</button>
+    </a>
+</div>

@@ -2,7 +2,7 @@
 
 namespace team_f_WebShop.API.Migrations
 {
-    public partial class Claus : Migration
+    public partial class nykl : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,8 @@ namespace team_f_WebShop.API.Migrations
                     Name = table.Column<string>(type: "nvarchar(128)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Desciption = table.Column<string>(type: "nvarchar(256)", nullable: true)
+                    Desciption = table.Column<string>(type: "nvarchar(256)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,11 +38,11 @@ namespace team_f_WebShop.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Product",
-                columns: new[] { "ProductId", "Desciption", "Name", "Price", "Quantity" },
+                columns: new[] { "ProductId", "Desciption", "Id", "Name", "Price", "Quantity" },
                 values: new object[,]
                 {
-                    { 1, "LED-skærm", "GIGABYTE FI32U", 8575, 6 },
-                    { 2, "3840 x 2160 (4K)", "GIGABYTE M28U", 5999, 13 }
+                    { 1, "LED-skærm", 0, "GIGABYTE FI32U", 8575, 6 },
+                    { 2, "3840 x 2160 (4K)", 0, "GIGABYTE M28U", 5999, 13 }
                 });
 
             migrationBuilder.InsertData(

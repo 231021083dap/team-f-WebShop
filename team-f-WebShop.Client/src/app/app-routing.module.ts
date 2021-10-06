@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategorypageComponent } from './categorypage/categorypage.component';
-import { CategoryComponent } from './Admin/category/category.component';
-import { FrontpageComponent } from './frontpage/frontpage.component';
+import { CategoryCrudComponent } from './components/ADMIN/category-crud/category-crud.component';
+import { ProductCRUDComponent } from './components/ADMIN/product-crud/product-crud.component';
+import { FrontPageComponent } from './components/Pages/front-page/front-page.component';
+import { ProductPageComponent } from './components/Pages/product-page/product-page.component';
+
 
 const routes: Routes = [
-  {path:'', component: CategorypageComponent},
-  {path:'admin/categorys', component:CategoryComponent},
-  {path:'frontpages', component: FrontpageComponent}
+
+  {path:'', component: FrontPageComponent},     //FRONT PAGE
+
+  {path:'ADMIN/product-crud', component: ProductCRUDComponent},    //PRODUCT ADMIN PAGE
+
+  {path:'ADMIN/category-crud', component: CategoryCrudComponent},  //CATEGORY ADMIN PAGE
+
+  {path:'product/:productId', component: ProductPageComponent}  //SPECIFICK PRODUCT PAGE
+
 ];
 
 @NgModule({

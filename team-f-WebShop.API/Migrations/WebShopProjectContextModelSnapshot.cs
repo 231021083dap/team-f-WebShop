@@ -28,6 +28,9 @@ namespace team_f_WebShop.API.Migrations
                     b.Property<string>("Desciption")
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(128)");
@@ -47,6 +50,7 @@ namespace team_f_WebShop.API.Migrations
                         {
                             ProductId = 1,
                             Desciption = "LED-skærm",
+                            Id = 0,
                             Name = "GIGABYTE FI32U",
                             Price = 8575,
                             Quantity = 6
@@ -55,6 +59,7 @@ namespace team_f_WebShop.API.Migrations
                         {
                             ProductId = 2,
                             Desciption = "3840 x 2160 (4K)",
+                            Id = 0,
                             Name = "GIGABYTE M28U",
                             Price = 5999,
                             Quantity = 13

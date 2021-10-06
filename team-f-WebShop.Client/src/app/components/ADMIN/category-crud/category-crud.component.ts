@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { category } from '../../models';
-import { CategoryService } from '../../category.service';
+import { category } from 'src/app/models';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  selector: 'app-category-crud',
+  templateUrl: './category-crud.component.html',
+  styleUrls: ['./category-crud.component.css']
 })
-export class CategoryComponent implements OnInit {
-
+export class CategoryCrudComponent implements OnInit {
+  
   categorys: category[] = [];
   category:category = {id:0, categoryName:''};
 

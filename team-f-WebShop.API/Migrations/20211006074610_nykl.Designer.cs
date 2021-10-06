@@ -9,8 +9,8 @@ using team_f_WebShop.API.Database;
 namespace team_f_WebShop.API.Migrations
 {
     [DbContext(typeof(WebShopProjectContext))]
-    [Migration("20210927075435_Claus")]
-    partial class Claus
+    [Migration("20211006074610_nykl")]
+    partial class nykl
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,9 @@ namespace team_f_WebShop.API.Migrations
 
                     b.Property<string>("Desciption")
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -49,6 +52,7 @@ namespace team_f_WebShop.API.Migrations
                         {
                             ProductId = 1,
                             Desciption = "LED-skærm",
+                            Id = 0,
                             Name = "GIGABYTE FI32U",
                             Price = 8575,
                             Quantity = 6
@@ -57,6 +61,7 @@ namespace team_f_WebShop.API.Migrations
                         {
                             ProductId = 2,
                             Desciption = "3840 x 2160 (4K)",
+                            Id = 0,
                             Name = "GIGABYTE M28U",
                             Price = 5999,
                             Quantity = 13
