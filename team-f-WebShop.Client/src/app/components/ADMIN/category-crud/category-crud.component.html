@@ -1,0 +1,21 @@
+
+
+
+
+<p>CategoryName</p>
+<input [(ngModel)]='category.categoryName'>
+<button (click)="save()">Gem</button>
+<button (click)="cancel()">Annuller</button>
+
+<select [(ngModel)]="category.id">
+  <option [value]="0">Vælg category</option>
+  <option *ngFor="let category of categorys" [value]="category.id">{{category.categoryName}}</option>
+</select>
+
+<ul>
+  <li *ngFor="let category of categorys">
+    <button (click)="edit(category)">Ret</button>
+    <button (click)="delete(category)">Slet</button>
+    {{category.categoryName}}
+  </li>
+</ul>

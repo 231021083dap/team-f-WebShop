@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,11 +12,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using team_f_WebShop.API.Database;
+using team_f_WebShop.API.Repositories;
+using team_f_WebShop.API.Services;
 
 namespace team_f_WebShop.API
 {
     public class Startup
     {
+        private readonly string CORSRules = "_CORSRules";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,12 +32,47 @@ namespace team_f_WebShop.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+        services.AddCors(options =>
+         {
+             options.AddPolicy(name: CORSRules,
+                 builder =>
+                 {
+                     builder.WithOrigins("http://localhost:4200")
+                     .AllowAnyHeader()
+                     .AllowAnyMethod();
+                 });
+         });
+
+            // added scopes
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+
+
+            // Connection string "Default"
+            services.AddDbContext<WebShopProjectContext>(
+                a => a.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+
+
+
+
+
             services.AddControllers();
+            services.AddScoped<IcategoryRepository, categoryRepository>();
+
+            services.AddDbContext<WebShopProjectContext>(
+                o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddScoped<IcategoryService, categoryService>();
+               
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "team_f_WebShop.API", Version = "v1" });
             });
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,6 +85,8 @@ namespace team_f_WebShop.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(CORSRules);
 
             app.UseRouting();
 
